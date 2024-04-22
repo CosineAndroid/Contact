@@ -16,11 +16,9 @@ class MainActivity : AppCompatActivity() {
         ViewPager()
 
         setContentView(binding.root)
-
     }
 
     private fun ViewPager(){
         val fragmentList = listOf(MyPageFragment(), MyPageFragment())
-
     }
 }
