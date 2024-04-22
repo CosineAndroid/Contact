@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.viewpager.adapter = ViewPagerAdapter(fragmentList, this)
 
-        val tabTitle = listOf("Contact", "My page")
+        val tabTitle = listOf(getString(R.string.taplayout_contact),getString(R.string.taplayout_mypage))
 
         TabLayoutMediator(binding.tabLayout, binding.viewpager){ tab, position ->
             tab.text = tabTitle[position]
