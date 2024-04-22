@@ -2,7 +2,8 @@ package kr.camp.contact
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kr.camp.contact.data.Contact
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import kr.camp.contact.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -11,8 +12,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        ViewPager()
+
         setContentView(binding.root)
-        val fragment = ContactDetailFragment.newInstance(Contact(0, "", "", "", ""))
-        supportFragmentManager.beginTransaction().replace(R.id.testLayout, fragment).commit()
+    }
+
+    private fun ViewPager(){
+        val fragmentList = listOf(MyPageFragment(), MyPageFragment())
     }
 }

@@ -9,4 +9,7 @@
     <color name="contact_detail_card_background">#1c1d22</color>
     <color name="contact_detail_button_background">#5865f2</color>
     <color name="contact_detail_card_title">#b2b1b6</color>
+    <color name="background">#1C1D22</color>
+    <color name="darkgray">#27272F</color>
+    <color name="darkblue">#5864F2</color>
 </resources>
