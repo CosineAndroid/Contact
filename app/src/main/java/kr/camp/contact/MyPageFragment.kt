@@ -16,6 +16,7 @@ class MyPageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        // 테스트
         binding = FragmentMypageBinding.inflate(inflater, container, false)
         return binding.root
     }
