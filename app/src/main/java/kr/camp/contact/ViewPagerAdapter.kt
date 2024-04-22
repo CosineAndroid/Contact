@@ -11,6 +11,6 @@ class ViewPagerAdapter(private val fragmentList: ArrayList<Fragment>, fragmentAc
     }
 
     override fun getItemCount(): Int {
-        return fragmentList.size
+        return fragmentList.count()
     }
 }
