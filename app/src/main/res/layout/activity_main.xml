@@ -18,6 +18,7 @@
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:tabGravity="fill"
+        app:tabTextAppearance="@style/tabLayoutStyle"
         android:background="@color/darkgray"
         app:tabIndicatorColor="@color/darkblue"
         app:tabIndicatorGravity="bottom"
