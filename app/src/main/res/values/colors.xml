@@ -8,4 +8,5 @@
     <color name="contact_detail_background">#27272f</color>
     <color name="contact_detail_card_background">#1c1d22</color>
     <color name="contact_detail_button_background">#5865f2</color>
+    <color name="contact_detail_card_title">#b2b1b6</color>
 </resources>

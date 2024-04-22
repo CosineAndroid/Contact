@@ -6,7 +6,6 @@
     android:layout_height="match_parent">
 
     <ScrollView
-        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/contact_detail_background"
@@ -16,7 +15,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp">
 
@@ -49,7 +47,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/nameTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -64,59 +62,63 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <Button
+                    <include
                         android:id="@+id/messageButton"
+                        layout="@layout/contact_detail_button"
                         android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="16dp"
-                        android:background="@drawable/contact_detail_button"
-                        android:text="MESSAGE"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/callButton"
                         app:layout_constraintStart_toStartOf="parent" />
 
-                    <Button
+                    <include
                         android:id="@+id/callButton"
+                        layout="@layout/contact_detail_button"
                         android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="16dp"
-                        android:background="@drawable/contact_detail_button"
-                        android:text="CALL"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/messageButton" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/mobileCardView"
+            <include
+                android:id="@+id/phoneNumberCardView"
+                layout="@layout/contact_detail_card"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/contact_detail_card_background"
-                app:cardCornerRadius="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mainCardView" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/memoCardView"
+            <include
+                android:id="@+id/websiteCardView"
+                layout="@layout/contact_detail_card"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/contact_detail_card_background"
-                app:cardCornerRadius="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mobileCardView" />
+                app:layout_constraintTop_toBottomOf="@+id/phoneNumberCardView" />
+
+            <include
+                android:id="@+id/memoCardView"
+                layout="@layout/contact_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/websiteCardView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
