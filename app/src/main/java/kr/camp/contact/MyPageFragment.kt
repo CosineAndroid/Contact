@@ -26,6 +26,7 @@ class MyPageFragment : Fragment() {
     private fun showDialog(){
         MypageDialog(requireContext()){
         }.show()
+
     }
 
 

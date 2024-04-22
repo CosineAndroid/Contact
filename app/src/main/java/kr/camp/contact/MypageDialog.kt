@@ -6,11 +6,11 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.Toast
-import kr.camp.contact.databinding.ProfileDialogBinding
+import kr.camp.contact.databinding.MypageDialogBinding
 
 class MypageDialog(context: Context, private val onClick : (String) -> Unit) : Dialog(context) {
 
-    private val binding by lazy { ProfileDialogBinding.inflate(layoutInflater) }
+    private val binding by lazy { MypageDialogBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
