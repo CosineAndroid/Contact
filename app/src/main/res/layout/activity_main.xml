@@ -22,6 +22,6 @@
         app:tabIndicatorColor="@color/darkblue"
         app:tabIndicatorGravity="bottom"
         app:tabIndicatorHeight="5dp"
-        app:tabRippleColor="@color/white"
+        app:tabRippleColor="@color/gray"
         app:tabTextColor="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>

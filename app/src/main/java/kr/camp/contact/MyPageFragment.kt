@@ -9,15 +9,23 @@ import kr.camp.contact.databinding.FragmentMypageBinding
 
 class MyPageFragment : Fragment() {
 
-    private lateinit var binding: FragmentMypageBinding
+    private val binding by lazy { FragmentMypageBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        binding = FragmentMypageBinding.inflate(inflater, container, false)
+        binding.floatingButton.setOnClickListener {
+            showDialog()
+        }
+
         return binding.root
+    }
+
+    private fun showDialog(){
+        MypageDialog(requireContext()){
+        }.show()
     }
 
 

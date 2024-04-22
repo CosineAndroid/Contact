@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        ViewPager()
+        viewPager()
     }
 
-    private fun ViewPager(){
+    private fun viewPager(){
 
         val fragmentList = ArrayList<Fragment>()
         fragmentList.add(ContactListFragment())
