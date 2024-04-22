@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kr.camp.contact.data.Contact
+import kr.camp.contact.databinding.ContactDetailCardBinding
 import kr.camp.contact.databinding.FragmentContactDetailBinding
 import kr.camp.contact.intent.IntentKey
 
@@ -36,14 +37,20 @@ class ContactDetailFragment : Fragment() {
     }
 
     private fun initView() = with(binding) {
+        profileImageView.setImageResource(contact.profileImageDrawableId)
+
         nameTextView.text = contact.name
         messageButton.root.text = getString(R.string.contact_detail_message_button)
         callButton.root.text = getString(R.string.contact_detail_call_button)
 
-        phoneNumberCardView.apply {
-            titleTextView.text = getString(R.string.contact_detail_phone_number_title)
-            descriptionTextView.text = contact.phoneNumber
-        }
+        phoneNumberCardView.init(R.string.contact_detail_phone_number_title, contact.phoneNumber)
+        websiteCardView.init(R.string.contact_detail_website_title, contact.website)
+        memoCardView.init(R.string.contact_detail_memo_title, contact.memo)
+    }
+
+    private fun ContactDetailCardBinding.init(stringId: Int, description: String) {
+        titleTextView.text = getString(stringId)
+        descriptionTextView.text = description
     }
 
     override fun onDestroyView() {
