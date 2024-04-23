@@ -21,5 +21,6 @@
     <string name="mypage_dialog_phone">&#160;Phone</string>
     <string name="mypage_dialog_homepage">&#160;Homepage</string>
     <string name="mypage_dialog_memo">&#160;Memo</string>
+    <string name="mypage_toast_cancel">취소</string>
 
 </resources>

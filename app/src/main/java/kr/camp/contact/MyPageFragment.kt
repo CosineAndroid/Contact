@@ -23,7 +23,7 @@ class MyPageFragment : Fragment() {
 
             dialog.setButtonClickListener(object : MypageDialog.OnButtonClickListener{
                 override fun onCancelClicked() {
-                    Toast.makeText(context, "취소", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.mypage_toast_cancel), Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onSaveClicked(name: String, mobile : String, homepage : String, memo : String) {
