@@ -23,11 +23,11 @@ class ContactListFragment : Fragment() {
     // 온클릭 메소드
     private fun adapterOnClick(contact: Contact) {
         val contactDetailFragment = ContactDetailFragment.newInstance(contact)
-        childFragmentManager.beginTransaction()
-            .replace(R.id.contact_list, contactDetailFragment)
-            .setReorderingAllowed(true)
-            .addToBackStack("")
-            .commit()
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.contact_list, contactDetailFragment)
+            ?.setReorderingAllowed(true)
+            ?.addToBackStack(null)
+            ?.commit()
     }
 
     // detail fragment에 값 주기

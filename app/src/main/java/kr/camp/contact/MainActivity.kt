@@ -24,17 +24,23 @@ class MainActivity : AppCompatActivity() {
         fragmentList.add(ContactListFragment())
         fragmentList.add(MyPageFragment())
 
-        binding.viewpager.adapter = ViewPagerAdapter(fragmentList, this)
+        binding.viewPager.adapter = ViewPagerAdapter(fragmentList, this)
 
         // tabLayout
         val tabTitle = listOf(getString(R.string.taplayout_contact), getString(R.string.taplayout_mypage))
-        TabLayoutMediator(binding.tabLayout, binding.viewpager) { tab, position ->
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = tabTitle[position]
         }.attach()
     }
 
-    fun hideNavigationBar() {
-        binding.tabLayout.visibility = View.GONE
+    fun showTabLayout() = with(binding) {
+        tabLayout.visibility = View.VISIBLE
+        viewPager.setUserInputEnabled(true)
+    }
+
+    fun hideTabLayout() = with(binding) {
+        tabLayout.visibility = View.GONE
+        viewPager.setUserInputEnabled(false)
     }
 }
 

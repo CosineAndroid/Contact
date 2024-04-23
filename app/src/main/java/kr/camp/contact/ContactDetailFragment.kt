@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowInsets
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import kr.camp.contact.data.Contact
 import kr.camp.contact.databinding.ContactDetailCardBinding
 import kr.camp.contact.databinding.FragmentContactDetailBinding
@@ -19,6 +16,8 @@ class ContactDetailFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var contact: Contact
+
+    private val mainActivity get() = activity as? MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,14 +35,14 @@ class ContactDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mainActivity = activity as? MainActivity
-        mainActivity?.hideNavigationBar()
+        mainActivity?.hideTabLayout()
         initView()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        mainActivity?.showTabLayout()
     }
 
     private fun initView() = with(binding) {
