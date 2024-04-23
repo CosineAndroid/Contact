@@ -38,20 +38,23 @@ class MypageDialog : DialogFragment() {
         // 배경 투명하게
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        binding.cencelButton.setOnClickListener {
-            buttonClickListener.onCancelClicked()
-            dismiss()
-        }
+        with(binding){
 
-        binding.saveButton.setOnClickListener {
+            cencelButton.setOnClickListener {
+                buttonClickListener.onCancelClicked()
+                dismiss()
+            }
 
-            buttonClickListener.onSaveClicked(
-                binding.nameEditText.text.toString(),
-                binding.phoneEditText.text.toString(),
-                binding.websiteEditText.text.toString(),
-                binding.memoEditText.text.toString())
+            saveButton.setOnClickListener {
+                buttonClickListener.onSaveClicked(
+                    nameEditText.text.toString(),
+                    phoneEditText.text.toString(),
+                    websiteEditText.text.toString(),
+                    memoEditText.text.toString())
 
-            dismiss()
+                dismiss()
+            }
+
         }
 
         return view
