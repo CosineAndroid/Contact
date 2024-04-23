@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kr.camp.contact.data.Contact
 import kr.camp.contact.databinding.FragmentContactlistBinding
 import kr.camp.contact.intent.IntentKey
+import kr.camp.contact.registry.ContactRegistry
+import kotlin.math.log
 
 class ContactListFragment : Fragment() {
 
@@ -25,7 +27,7 @@ class ContactListFragment : Fragment() {
         val bundle = Bundle().apply { putParcelable(IntentKey.CONTACT, contact) }
         val contactDetailFragment = ContactDetailFragment.newInstance(bundle)
         childFragmentManager.beginTransaction()
-            .replace(R.id.main,contactDetailFragment)
+            .replace(R.id.contact_list,contactDetailFragment)
             .setReorderingAllowed(true)
             .addToBackStack("")
             .commit()
@@ -36,6 +38,9 @@ class ContactListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
+
+        // 리스트 연결
+        contactAdapter.contactList = ContactRegistry.contacts as MutableList<Contact>
 
         // 리싸이클러뷰- 어뎁터 연결
         with(binding.recyclerView) {

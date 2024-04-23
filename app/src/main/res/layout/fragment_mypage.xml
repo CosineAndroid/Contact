@@ -9,10 +9,10 @@
     android:background="@color/background">
 
 
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="85dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -23,13 +23,14 @@
 
                 <ImageView
                     android:id="@+id/contectImageView"
-                    android:layout_width="match_parent"
+                    android:layout_width="365dp"
                     android:layout_height="300dp"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+                    android:src="@drawable/darkgray_corner_button" />
 
                 <ImageView
                     android:id="@+id/contectNameImageView"
@@ -62,7 +63,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/contectNameImageView"
                     app:layout_constraintStart_toStartOf="@+id/contectNameImageView"
                     app:layout_constraintTop_toBottomOf="@+id/nameTextView"
-                    android:layout_marginTop="25dp">
+                    android:layout_marginTop="30dp">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/messageButton"
@@ -194,22 +195,27 @@
                     app:layout_constraintStart_toStartOf="@+id/memoTitleTextView"
                     app:layout_constraintTop_toBottomOf="@+id/memoTitleTextView" />
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:clickable="true"
         android:backgroundTint="@color/darkblue"
+        android:src="@drawable/plus"
+        app:maxImageSize="30dp"
+        android:tint="@color/white"
+        app:fabCustomSize="65dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,4 +15,11 @@
     <string name="mypage_homepage_context">홈페이지 주소</string>
     <string name="mypage_memo_title">Memo</string>
     <string name="mypage_memo_context">메모내용</string>
+    <string name="taplayout_contact">CONTACT</string>
+    <string name="taplayout_mypage">My page</string>
+    <string name="mypage_dialog_name">&#160;Name</string>
+    <string name="mypage_dialog_phone">&#160;Phone</string>
+    <string name="mypage_dialog_homepage">&#160;Homepage</string>
+    <string name="mypage_dialog_memo">&#160;Memo</string>
+
 </resources>

@@ -14,10 +14,10 @@ import kr.camp.contact.registry.ContactRegistry
 class ContactAdapter(private val onClick: (Contact) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    val contactList = mutableListOf<Contact>()
+    var contactList = mutableListOf<Contact>()
     // 뷰홀더1
-    inner class ContactViewHolder1(private var binding: ItemType1Binding, val onClick: (Contact) -> Unit
-    ) : RecyclerView.ViewHolder(binding.root) {
+    inner class ContactViewHolder1(private var binding: ItemType1Binding, val onClick: (Contact) -> Unit)
+        : RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
                 onClick(contactList[position])
@@ -27,6 +27,7 @@ class ContactAdapter(private val onClick: (Contact) -> Unit
             // 별 아이콘 클릭 시 색깔변경 & 스낵바 표시
 
             binding.name.text = contact.name
+            binding.circleImage.setImageResource(contact.profileImageDrawableId)
 
             var isLiked = false
             binding.star.setImageResource(if (isLiked) {R.drawable.filled_star} else {R.drawable.empty_star})
@@ -38,6 +39,7 @@ class ContactAdapter(private val onClick: (Contact) -> Unit
                     isLiked = true
                 } else {
                     binding.star.setImageResource(R.drawable.empty_star)
+                    Snackbar.make(binding.type1, "관심 기업에서 해제되었습니다.", Snackbar.LENGTH_SHORT).show()
                     isLiked = false
                 }
             }
@@ -47,9 +49,7 @@ class ContactAdapter(private val onClick: (Contact) -> Unit
     }
 
     // 뷰홀더2
-    inner class ContactViewHolder2(private var binding: ItemType2Binding,
-        val onClick: (Contact) -> Unit
-    )
+    inner class ContactViewHolder2(private var binding: ItemType2Binding, val onClick: (Contact) -> Unit)
         : RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
@@ -60,6 +60,8 @@ class ContactAdapter(private val onClick: (Contact) -> Unit
         fun bind2(contact: Contact) {
 
             binding.name.text = contact.name
+            binding.circleImage.setImageResource(contact.profileImageDrawableId)
+
 
             // 별 아이콘 클릭 시 색깔변경 & 스낵바 표시
             var isLiked = false
@@ -72,6 +74,7 @@ class ContactAdapter(private val onClick: (Contact) -> Unit
                     isLiked = true
                 } else {
                     binding.star.setImageResource(R.drawable.empty_star)
+                    Snackbar.make(binding.type2, "관심 기업에서 해제되었습니다.", Snackbar.LENGTH_SHORT).show()
                     isLiked = false
                 }
             }
@@ -86,18 +89,18 @@ class ContactAdapter(private val onClick: (Contact) -> Unit
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType) {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return when (viewType) {
             VIEW_TYPE1 -> {
-                val binding = LayoutInflater.from(parent.context).inflate(R.layout.item_type1, parent, false)
-                return ContactViewHolder1(ItemType1Binding.bind(binding), onClick)
+                val binding = ItemType1Binding.inflate(layoutInflater, parent, false)
+                ContactViewHolder1(binding, onClick)
             }
             VIEW_TYPE2 -> {
-                val binding = LayoutInflater.from(parent.context).inflate(R.layout.item_type2, parent, false)
-                return ContactViewHolder2(ItemType2Binding.bind(binding), onClick)
+                val binding = ItemType2Binding.inflate(layoutInflater, parent, false)
+                ContactViewHolder2(binding, onClick)
             }
             else -> throw RuntimeException("알 수 없는 뷰타입 에러")
         }
-
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

@@ -1,9 +1,11 @@
 package kr.camp.contact
-
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kr.camp.contact.databinding.ActivityMainBinding
 
 
@@ -16,31 +18,36 @@ class MainActivity : AppCompatActivity() {
         viewPager()
         setContentView(binding.root)
 
-//        // navigaton 버튼 클릭
-//        binding.apply{
-//            fragmentBtn1.setOnclickListner {
-//                setFragment(ContactListFragment())
-//            }
-//            fragmentBtn2.setOnclickListner{
-//                setFragment(MyPageFragment)
-//            }
-//        }
-        setFragment(ContactListFragment())
+
     }
 
-        private fun setFragment(fragment: Fragment) {
-        supportFragmentManager.commit {
-            replace(R.id.viewpager,fragment)
-            setReorderingAllowed(true)
-            addToBackStack("")
-        }
+    private fun viewPager() {
 
-        }
+        val fragmentList = ArrayList<Fragment>()
+        fragmentList.add(ContactListFragment())
+        fragmentList.add(MyPageFragment())
 
+        binding.viewpager.adapter = ViewPagerAdapter(fragmentList, this)
 
+        // tabLayout
+        val tabTitle =
+            listOf(getString(R.string.taplayout_contact), getString(R.string.taplayout_mypage))
+        TabLayoutMediator(binding.tabLayout, binding.viewpager) { tab, position ->
+            tab.text = tabTitle[position]
+        }.attach()
+    }
 
-
-    private fun viewPager(){
-        val fragmentList = listOf(MyPageFragment(), MyPageFragment())
+    fun hideNavigationBar() {
+        binding.tabLayout.visibility = View.GONE
     }
 }
+
+
+
+
+
+
+
+
+
+

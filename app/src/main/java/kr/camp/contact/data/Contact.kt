@@ -11,7 +11,8 @@ data class Contact(
     val website: String,
     val memo: String,
     val viewType: Int
-) : Parcelable { companion object {
+) : Parcelable
+{ companion object {
     const val VIEW_TYPE1 = 0
     const val VIEW_TYPE2 = 1
     }

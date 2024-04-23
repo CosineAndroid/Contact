@@ -12,6 +12,7 @@ object ContactRegistry {
             website = "https://www.microsoft.com/ko-kr",
             memo = "미국에 위치한 대규모 IT 기업이다. \n 오피스와 윈도우를 통해 일반 소비자들을 상대로도 매우 높은 인지도를 갖추고 있다",
             viewType = 0
+
         ),
         Contact(
             profileImageDrawableId = R.drawable.apple,
@@ -51,6 +52,22 @@ object ContactRegistry {
             phoneNumber = "080-617-1399",
             website = "https://www.tesla.com/ko_kr",
             memo = "테슬라는 미국의 전기자동차 제조업체이다.",
+            viewType = 1
+        ),
+        Contact(
+            profileImageDrawableId = R.drawable.nvidia,
+            name = "NVDIA",
+            phoneNumber = "408-486-2000",
+            website = "https://www.nvidia.com/ko-kr/",
+            memo = "엔비디아는 시스템반도체 설계 등의 사업을 운영하는 미국의 기업이다.",
+            viewType = 0
+        ),
+        Contact(
+            profileImageDrawableId = R.drawable.tsmc,
+            name = "TSMC",
+            phoneNumber = "070-7450-6047",
+            website = "https://www.tsmc.com/english",
+            memo = "대만의 반도체 산업 진흥 프로젝트의 일환으로 1987년 2월 21일에 공기업으로 설립됐다",
             viewType = 1
         )
     )
