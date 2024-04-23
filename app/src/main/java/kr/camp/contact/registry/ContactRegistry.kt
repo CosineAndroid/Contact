@@ -19,7 +19,7 @@ object ContactRegistry {
             name = "Apple",
             phoneNumber = "080–330–8877",
             website = "https://www.apple.com/kr/",
-            memo = "Apple은 1976년 4월 1일에 설립된 미국의 전자제품 제조사로, 세부 업종은 하드웨어, 소프트웨어, 온라인 서비스 등의 디자인·설계, 개발, 제조·제작[9] 및 판매업이다.",
+            memo = "Apple은 1976년 4월 1일에 설립된 미국의 전자제품 제조사로, 세부 업종은 하드웨어, 소프트웨어, 온라인 서비스 등의 디자인·설계, 개발, 제조·제작 및 판매업이다.",
             viewType = 1
         ),
         Contact(
@@ -43,7 +43,7 @@ object ContactRegistry {
             name = "Meta",
             phoneNumber = "02-737-0455",
             website = "https://www.meta.com/kr/",
-            memo = "메타는 미국의 종합 IT 기업이다. \n 현재 대표이사인 페이스북 창업자 마크 저커버그의 주도로 그를 포함해서 다섯 명이 창업했다",
+            memo = "메타는 미국의 종합 IT 기업이다. \n현재 대표이사인 페이스북 창업자 마크 저커버그의 주도로 그를 포함해서 다섯 명이 창업했다",
             viewType = 0
         ),
         Contact(
