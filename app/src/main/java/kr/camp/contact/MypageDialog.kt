@@ -1,41 +1,61 @@
 package kr.camp.contact
-
-import android.app.Dialog
-import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import kr.camp.contact.databinding.MypageDialogBinding
 
-class MypageDialog(context: Context) : Dialog(context) {
+class MypageDialog : DialogFragment() {
 
-    private val binding by lazy { MypageDialogBinding.inflate(layoutInflater) }
+    private var _binding: MypageDialogBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-
-        myPageDialog()
+    interface OnButtonClickListener {
+        fun onCancelClicked()
+        fun onSaveClicked(name: String, mobile : String, homepage : String, memo : String)
     }
 
+    // 클릭 이벤트 설정
+    fun setButtonClickListener(buttonClickListener: OnButtonClickListener) {
+        this.buttonClickListener = buttonClickListener
+    }
 
-    private fun myPageDialog() = with(binding){
-        // 화면 터치를 통해 dialog가 종료되지 않도록
-        setCancelable(false)
+    private lateinit var buttonClickListener: OnButtonClickListener
 
-        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        // 버튼 클릭이벤트 처리
-        cencelButton.setOnClickListener {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = MypageDialogBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        // 배경 투명하게
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        binding.cencelButton.setOnClickListener {
+            buttonClickListener.onCancelClicked()
             dismiss()
-            Toast.makeText(context, "취소", Toast.LENGTH_SHORT).show()
-        }
-        saveButton.setOnClickListener {
-            Toast.makeText(context, "저장", Toast.LENGTH_SHORT).show()
         }
 
+        binding.saveButton.setOnClickListener {
 
+            buttonClickListener.onSaveClicked(
+                binding.nameEditText.text.toString(),
+                binding.phoneEditText.text.toString(),
+                binding.websiteEditText.text.toString(),
+                binding.memoEditText.text.toString())
+
+            dismiss()
+        }
+
+        return view
     }
+
+
 }
