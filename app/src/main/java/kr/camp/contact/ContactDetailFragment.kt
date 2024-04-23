@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsets
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import kr.camp.contact.data.Contact
 import kr.camp.contact.databinding.ContactDetailCardBinding
 import kr.camp.contact.databinding.FragmentContactDetailBinding
@@ -16,6 +19,7 @@ class ContactDetailFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var contact: Contact
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,10 +35,18 @@ class ContactDetailFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
+        val mainActivity = activity as? MainActivity
+        mainActivity?.hideNavigationBar()
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 
     private fun initView() = with(binding) {
         profileImageView.setImageResource(contact.profileImageDrawableId)
@@ -53,13 +65,8 @@ class ContactDetailFragment : Fragment() {
         descriptionTextView.text = description
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     companion object {
-        fun newInstance(contact: Contact): ContactDetailFragment {
+        fun newInstance(contact: Bundle): ContactDetailFragment {
             val bundle = Bundle().apply {
                 putParcelable(IntentKey.CONTACT, contact)
             }
@@ -69,3 +76,8 @@ class ContactDetailFragment : Fragment() {
         }
     }
 }
+
+
+
+
+

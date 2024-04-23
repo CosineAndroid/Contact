@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import kr.camp.contact.databinding.MypageDialogBinding
+import kr.camp.contact.registry.ContactRegistry
+import kr.camp.contact.registry.ContactRegistry.addContact
 
 class MypageDialog : DialogFragment() {
 
@@ -32,8 +34,6 @@ class MypageDialog : DialogFragment() {
     }
 
     private lateinit var buttonClickListener: OnButtonClickListener
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,12 +68,9 @@ class MypageDialog : DialogFragment() {
                     memoEditText.text.toString())
                 dismiss()
             }
-
         }
-
         return view
     }
-
 
     //사진 갖고오기
     private val activityResult: ActivityResultLauncher<Intent> = registerForActivityResult(
@@ -92,5 +89,4 @@ class MypageDialog : DialogFragment() {
                 .into(binding.circleImageView)
         }
     }
-
 }
