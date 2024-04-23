@@ -4,4 +4,9 @@
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/black</item>
     </style>
+
+    <style name="tabLayoutStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

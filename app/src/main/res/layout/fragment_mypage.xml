@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyPageFragment"
+    android:background="@color/background">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/contectImageView"
+                android:layout_width="365dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/darkgray_corner_button"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/contectNameImageView"
+                android:layout_width="365dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/darkgray_corner_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contectImageView" />
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/mypage_name"
+                android:textColor="@color/white"
+                android:textSize="50sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/contectNameImageView"
+                app:layout_constraintStart_toStartOf="@+id/contectNameImageView"
+                app:layout_constraintTop_toTopOf="@+id/contectNameImageView" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constrainlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="@+id/contectNameImageView"
+                app:layout_constraintStart_toStartOf="@+id/contectNameImageView"
+                app:layout_constraintTop_toBottomOf="@+id/nameTextView">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/messageButton"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/darkblue_corner_button"
+                    android:text="@string/mypage_message"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/callButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/callButton"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/darkblue_corner_button"
+                    android:text="@string/mypage_call"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/messageButton"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/mobileImageView"
+                android:layout_width="365dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/darkgray_corner_button"
+                app:layout_constraintEnd_toEndOf="@+id/contectNameImageView"
+                app:layout_constraintStart_toStartOf="@+id/contectNameImageView"
+                app:layout_constraintTop_toBottomOf="@+id/contectNameImageView" />
+
+            <TextView
+                android:id="@+id/mobileTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/mypage_mobile_title"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/mobileImageView"
+                app:layout_constraintTop_toTopOf="@+id/mobileImageView" />
+
+            <TextView
+                android:id="@+id/mobileContextTextView"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/mypage_mobile_context"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/mobileTitleTextView"
+                app:layout_constraintTop_toBottomOf="@+id/mobileTitleTextView" />
+
+
+            <ImageView
+                android:id="@+id/homepageImageView"
+                android:layout_width="365dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/darkgray_corner_button"
+                app:layout_constraintEnd_toEndOf="@+id/mobileImageView"
+                app:layout_constraintStart_toStartOf="@+id/mobileImageView"
+                app:layout_constraintTop_toBottomOf="@+id/mobileImageView" />
+
+            <TextView
+                android:id="@+id/homepageTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/mypage_homepage_title"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/homepageImageView"
+                app:layout_constraintTop_toTopOf="@+id/homepageImageView" />
+
+            <TextView
+                android:id="@+id/homepageContextTextView"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/mypage_homepage_context"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/homepageTitleTextView"
+                app:layout_constraintTop_toBottomOf="@+id/homepageTitleTextView" />
+
+
+            <ImageView
+                android:id="@+id/memoImageView"
+                android:layout_width="365dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/darkgray_corner_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/homepageImageView"
+                app:layout_constraintStart_toStartOf="@+id/homepageImageView"
+                app:layout_constraintTop_toBottomOf="@+id/homepageImageView" />
+
+            <TextView
+                android:id="@+id/memoTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/darkgray_corner_button"
+                android:text="@string/mypage_memo_title"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/memoImageView"
+                app:layout_constraintTop_toTopOf="@+id/memoImageView" />
+
+            <TextView
+                android:id="@+id/memoContextTextView"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/mypage_memo_context"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/memoTitleTextView"
+                app:layout_constraintTop_toBottomOf="@+id/memoTitleTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingButton"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:clickable="true"
+        android:backgroundTint="@color/darkblue"
+        android:src="@drawable/plus"
+        app:maxImageSize="30dp"
+        android:tint="@color/white"
+        app:fabCustomSize="65dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
