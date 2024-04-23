@@ -21,11 +21,11 @@ class MyPageFragment : Fragment() {
         }
 
         return binding.root
+
     }
 
     private fun showDialog(){
-        MypageDialog(requireContext()){
-        }.show()
+        MypageDialog(requireContext()).show()
 
     }
 
