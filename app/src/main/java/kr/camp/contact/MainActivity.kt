@@ -1,10 +1,9 @@
 package kr.camp.contact
+
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kr.camp.contact.databinding.ActivityMainBinding
 
@@ -17,8 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewPager()
         setContentView(binding.root)
-
-
     }
 
     private fun viewPager() {
@@ -30,8 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding.viewpager.adapter = ViewPagerAdapter(fragmentList, this)
 
         // tabLayout
-        val tabTitle =
-            listOf(getString(R.string.taplayout_contact), getString(R.string.taplayout_mypage))
+        val tabTitle = listOf(getString(R.string.taplayout_contact), getString(R.string.taplayout_mypage))
         TabLayoutMediator(binding.tabLayout, binding.viewpager) { tab, position ->
             tab.text = tabTitle[position]
         }.attach()

@@ -19,7 +19,7 @@ object ContactRegistry {
             name = "Apple",
             phoneNumber = "080–330–8877",
             website = "https://www.apple.com/kr/",
-            memo = "Apple은 1976년 4월 1일에 설립된 미국의 전자제품 제조사로, 세부 업종은 하드웨어, 소프트웨어, 온라인 서비스 등의 디자인·설계, 개발, 제조·제작[9] 및 판매업이다."
+            memo = "Apple은 1976년 4월 1일에 설립된 미국의 전자제품 제조사로, 세부 업종은 하드웨어, 소프트웨어, 온라인 서비스 등의 디자인·설계, 개발, 제조·제작[9] 및 판매업이다.",
             viewType = 1
         ),
         Contact(

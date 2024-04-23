@@ -1,6 +1,5 @@
 package kr.camp.contact
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,9 +18,9 @@ class MyPageFragment : Fragment() {
     ): View {
 
         binding.floatingButton.setOnClickListener {
-            val dialog = MypageDialog()
+            val dialog = MyPageDialog()
 
-            dialog.setButtonClickListener(object : MypageDialog.OnButtonClickListener{
+            dialog.setButtonClickListener(object : MyPageDialog.OnButtonClickListener{
                 override fun onCancelClicked() {
                     Toast.makeText(context, getString(R.string.mypage_toast_cancel), Toast.LENGTH_SHORT).show()
                 }

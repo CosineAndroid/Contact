@@ -20,7 +20,6 @@ class ContactDetailFragment : Fragment() {
 
     private lateinit var contact: Contact
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,18 +34,17 @@ class ContactDetailFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mainActivity = activity as? MainActivity
         mainActivity?.hideNavigationBar()
+        initView()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 
     private fun initView() = with(binding) {
         profileImageView.setImageResource(contact.profileImageDrawableId)
@@ -66,7 +64,7 @@ class ContactDetailFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(contact: Bundle): ContactDetailFragment {
+        fun newInstance(contact: Contact): ContactDetailFragment {
             val bundle = Bundle().apply {
                 putParcelable(IntentKey.CONTACT, contact)
             }
