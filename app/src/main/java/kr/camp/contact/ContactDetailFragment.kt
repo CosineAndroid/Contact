@@ -52,7 +52,7 @@ class ContactDetailFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(contact: Contact): ContactDetailFragment {
+        fun newInstance(contact: Bundle): ContactDetailFragment {
             val bundle = Bundle().apply {
                 putParcelable(IntentKey.CONTACT, contact)
             }
