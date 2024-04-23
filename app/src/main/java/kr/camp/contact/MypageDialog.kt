@@ -33,8 +33,9 @@ class MypageDialog(context: Context) : Dialog(context) {
             Toast.makeText(context, "취소", Toast.LENGTH_SHORT).show()
         }
         saveButton.setOnClickListener {
-
-//            Toast.makeText(context, "저장", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "저장", Toast.LENGTH_SHORT).show()
         }
+
+
     }
 }
