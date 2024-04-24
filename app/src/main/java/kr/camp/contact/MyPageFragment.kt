@@ -33,13 +33,15 @@ class MyPageFragment : Fragment() {
                     name: String,
                     mobile: String,
                     homepage: String,
-                    memo: String
+                    memo: String,
+                    image: Drawable
                 ) {
                     with(binding) {
                         nameTextView.text = name
                         mobileContextTextView.text = mobile
                         homepageContextTextView.text = homepage
                         memoContextTextView.text = memo
+                        cardviewImageView.setImageDrawable(image)
                     }
 
                 }
