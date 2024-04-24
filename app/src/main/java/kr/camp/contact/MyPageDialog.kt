@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import kr.camp.contact.databinding.MypageDialogBinding
+import java.util.regex.Pattern
 
 class MyPageDialog : DialogFragment() {
 
@@ -40,6 +43,76 @@ class MyPageDialog : DialogFragment() {
     ): View {
         _binding = MypageDialogBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        // 유효성 검사
+        val name = binding.nameEditText.text
+        val phoneNumber = binding.phoneEditText.text
+        val website = binding.websiteEditText.text
+        binding.saveButton.isEnabled = false
+
+
+        binding.nameEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (isRegularName(name.toString())) {
+                    binding.nameEditText.setBackgroundResource(R.drawable.dialog_edittext2)
+                    binding.saveButton.setBackgroundResource(R.drawable.darkblue_corner_button)
+
+                } else {
+                    binding.nameEditText.setBackgroundResource(R.drawable.dialog_edittext3)
+                    binding.saveButton.setBackgroundResource(R.drawable.darkgray_corner_button)
+                    binding.saveButton.isEnabled = false
+                }
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        }
+        )
+
+
+
+        binding.phoneEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (isRegularPhoneNumber(phoneNumber.toString())) {
+                    binding.phoneEditText.setBackgroundResource(R.drawable.dialog_edittext2)
+                    binding.saveButton.setBackgroundResource(R.drawable.darkblue_corner_button)
+                    binding.saveButton.isEnabled = true
+
+                } else {
+                    binding.phoneEditText.setBackgroundResource(R.drawable.dialog_edittext3)
+                    binding.saveButton.setBackgroundResource(R.drawable.darkgray_corner_button)
+                    binding.saveButton.isEnabled = false
+                }
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        }
+        )
+
+        binding.websiteEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (isRegularWebsite(website.toString())) {
+                    binding.websiteEditText.setBackgroundResource(R.drawable.dialog_edittext2)
+
+                } else {
+                    binding.websiteEditText.setBackgroundResource(R.drawable.dialog_edittext3)
+                }
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        }
+        )
+
+
 
         // 배경 투명하게
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -84,5 +157,21 @@ class MyPageDialog : DialogFragment() {
                 .fitCenter()
                 .into(binding.circleImageView)
         }
+    }
+    // 패턴
+    private fun isRegularName(name: String): Boolean {
+        val namePattern = "^[가-힣]{1,5}$"
+        return Pattern.matches(namePattern, name)
+    }
+
+    private fun isRegularPhoneNumber(phoneNumber: String): Boolean {
+        val phoneNumberPattern = "^([0-9]{3})-?([0-9]{3,4})-?([0-9]{4})$"
+        return Pattern.matches(phoneNumberPattern, phoneNumber)
+    }
+
+    private fun isRegularWebsite(website: String): Boolean {
+        val websitePattern = "^https?://(?:www\\.)?[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}$"
+
+        return Pattern.matches(websitePattern, website)
     }
 }
