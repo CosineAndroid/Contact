@@ -12,9 +12,7 @@ class MyPageFragment : Fragment() {
 
     private val binding by lazy { FragmentMypageBinding.inflate(layoutInflater) }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         binding.floatingButton.setOnClickListener {

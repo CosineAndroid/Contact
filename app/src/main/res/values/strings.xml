@@ -24,4 +24,7 @@
     <string name="mypage_dialog_homepage">&#160;웹사이트</string>
     <string name="mypage_dialog_memo">&#160;메모</string>
     <string name="mypage_toast_cancel">취소</string>
+    <string name="contact_list_add">연락처에 추가되었습니다.</string>
+
+
 </resources>
