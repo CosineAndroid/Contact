@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/backgroundDialogImageView"
+        android:layout_width="380dp"
+        android:layout_height="600dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/darkgray_corner_button" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:elevation="30dp"
+        android:layout_marginTop="25dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile_img"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundDialogImageView"
+        app:layout_constraintStart_toStartOf="@+id/backgroundDialogImageView"
+        app:layout_constraintTop_toTopOf="@+id/backgroundDialogImageView" />
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:background="@drawable/dialog_edittext"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/mypage_dialog_name"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundDialogImageView"
+        app:layout_constraintStart_toStartOf="@+id/backgroundDialogImageView"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+
+    <EditText
+        android:id="@+id/phoneEditText"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:background="@drawable/dialog_edittext"
+        android:ems="10"
+        android:inputType="phone"
+        android:hint="@string/mypage_dialog_phone"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/nameEditText"
+        app:layout_constraintStart_toStartOf="@+id/nameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+
+    <EditText
+        android:id="@+id/websiteEditText"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:background="@drawable/dialog_edittext"
+        android:ems="10"
+        android:inputType="textWebEditText"
+        android:hint="@string/mypage_dialog_homepage"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/phoneEditText"
+        app:layout_constraintStart_toStartOf="@+id/phoneEditText"
+        app:layout_constraintTop_toBottomOf="@+id/phoneEditText" />
+
+    <EditText
+        android:id="@+id/memoEditText"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:background="@drawable/dialog_edittext"
+        android:ems="10"
+        android:inputType="none"
+        android:hint="@string/mypage_dialog_memo"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/websiteEditText"
+        app:layout_constraintStart_toStartOf="@+id/websiteEditText"
+        app:layout_constraintTop_toBottomOf="@+id/websiteEditText" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/memoEditText"
+        app:layout_constraintStart_toStartOf="@+id/memoEditText"
+        app:layout_constraintTop_toBottomOf="@+id/memoEditText">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cencelButton"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/dialog_button"
+            android:text="취소"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/saveButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/saveButton"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/dialog_button"
+            android:text="저장"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cencelButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cencelButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
