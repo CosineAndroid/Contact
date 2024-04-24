@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyPageFragment"
-    android:background="@color/background">
+    android:background="@color/background"
+    tools:context=".MyPageFragment">
 
 
     <ScrollView
@@ -30,18 +29,17 @@
                 android:layout_width="365dp"
                 android:layout_height="300dp"
                 android:layout_marginTop="20dp"
-                android:scaleType="fitXY"
                 app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" >
+                app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/cardviewImageView"
-                android:layout_width="365dp"
-                android:layout_height="300dp"
-                android:src="@drawable/google"/>
-
+                <ImageView
+                    android:id="@+id/cardviewImageView"
+                    android:layout_width="365dp"
+                    android:layout_height="300dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/defualt_profile" />
             </androidx.cardview.widget.CardView>
 
             <ImageView
@@ -223,19 +221,16 @@
         android:id="@+id/floatingButton"
         android:layout_width="65dp"
         android:layout_height="65dp"
-        android:clickable="true"
-        android:backgroundTint="@color/darkblue"
-        android:src="@drawable/edit"
-        app:maxImageSize="35dp"
-        android:tint="@color/white"
-        app:fabCustomSize="65dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/darkblue"
+        android:clickable="true"
+        android:src="@drawable/edit"
+        android:tint="@color/white"
+        app:fabCustomSize="65dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="35dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
