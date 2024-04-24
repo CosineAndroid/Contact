@@ -19,7 +19,7 @@ class MyPageDialog : DialogFragment() {
 
     private var _binding: MypageDialogBinding? = null
     private val binding get() = _binding!!
-    private var imageuri: Uri? = null
+    var imageuri: Uri? = null
 
     interface OnButtonClickListener {
         fun onCancelClicked()
