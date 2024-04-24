@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.manager.Lifecycle
 import kr.camp.contact.data.Contact
@@ -65,10 +66,14 @@ class ContactListFragment : Fragment() {
             R.id.toolbar_info -> { // 레이아웃 타입 메뉴 띄우기
                 when(menuItem.itemId) {
                     R.id.first -> {
-
+                        binding.recyclerView.layoutManager = LinearLayoutManager(
+                            requireContext(), LinearLayoutManager.VERTICAL, false
+                        )
                     }
                     R.id.second-> {
-
+//                        binding.recyclerView.layoutManager = GridLayoutManager(
+//                            requireContext(),  GridLayoutManager.DEFAULT_SPAN_COUNT, false
+//                        )
                     }
                 }
             }
