@@ -9,13 +9,13 @@
 
     <ImageView
         android:id="@+id/backgroundDialogImageView"
-        android:layout_width="360dp"
+        android:layout_width="380dp"
         android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/background_corner" />
+        app:srcCompat="@drawable/darkgray_corner_button" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
@@ -31,8 +31,8 @@
 
     <EditText
         android:id="@+id/nameEditText"
-        android:layout_width="310dp"
-        android:layout_height="65dp"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
         android:background="@drawable/dialog_edittext"
         android:ems="10"
         android:inputType="text"
@@ -48,14 +48,14 @@
 
     <EditText
         android:id="@+id/phoneEditText"
-        android:layout_width="310dp"
-        android:layout_height="65dp"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
         android:background="@drawable/dialog_edittext"
         android:ems="10"
         android:inputType="phone"
         android:hint="@string/mypage_dialog_phone"
         android:textColorHint="@color/white"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -65,14 +65,14 @@
 
     <EditText
         android:id="@+id/websiteEditText"
-        android:layout_width="310dp"
-        android:layout_height="65dp"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
         android:background="@drawable/dialog_edittext"
         android:ems="10"
         android:inputType="textWebEditText"
         android:hint="@string/mypage_dialog_homepage"
         android:textColorHint="@color/white"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -82,14 +82,14 @@
 
     <EditText
         android:id="@+id/memoEditText"
-        android:layout_width="310dp"
-        android:layout_height="65dp"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
         android:background="@drawable/dialog_edittext"
         android:ems="10"
         android:inputType="none"
         android:hint="@string/mypage_dialog_memo"
         android:textColorHint="@color/white"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -101,7 +101,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/memoEditText"
         app:layout_constraintStart_toStartOf="@+id/memoEditText"
         app:layout_constraintTop_toBottomOf="@+id/memoEditText">
@@ -110,7 +110,7 @@
             android:id="@+id/cencelButton"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:background="@drawable/darkblue_corner_button"
+            android:background="@drawable/dialog_button"
             android:text="취소"
             android:textColor="@color/white"
             android:textSize="30sp"
@@ -125,7 +125,7 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
-            android:background="@drawable/darkblue_corner_button"
+            android:background="@drawable/dialog_button"
             android:text="저장"
             android:textColor="@color/white"
             android:textSize="30sp"

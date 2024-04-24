@@ -8,6 +8,7 @@ object ContactRegistry {
     private val _contacts = mutableListOf<Contact>(
         Contact(
             profileImageDrawableId = R.drawable.ms,
+            uriImage = null,
             name = "Microsoft",
             phoneNumber = "1577-9700",
             website = "https://www.microsoft.com/ko-kr",
@@ -16,14 +17,16 @@ object ContactRegistry {
         ),
         Contact(
             profileImageDrawableId = R.drawable.apple,
+            uriImage = null,
             name = "Apple",
             phoneNumber = "080–330–8877",
             website = "https://www.apple.com/kr/",
-            memo = "Apple은 1976년 4월 1일에 설립된 미국의 전자제품 제조사로, 세부 업종은 하드웨어, 소프트웨어, 온라인 서비스 등의 디자인·설계, 개발, 제조·제작[9] 및 판매업이다.",
+            memo = "Apple은 1976년 4월 1일에 설립된 미국의 전자제품 제조사로, 세부 업종은 하드웨어, 소프트웨어, 온라인 서비스 등의 디자인·설계, 개발, 제조·제작 및 판매업이다.",
             viewType = 1
         ),
         Contact(
             profileImageDrawableId = R.drawable.google,
+            uriImage = null,
             name = "Google",
             phoneNumber = "080-234-0051",
             website = "https://www.google.co.kr/?hl=ko",
@@ -32,6 +35,7 @@ object ContactRegistry {
         ),
         Contact(
             profileImageDrawableId = R.drawable.amazon,
+            uriImage = null,
             name = "Amazon",
             phoneNumber = "1-800-280-4331",
             website = "https://www.amazon.com/",
@@ -40,14 +44,16 @@ object ContactRegistry {
         ),
         Contact(
             profileImageDrawableId = R.drawable.meta,
+            uriImage = null,
             name = "Meta",
             phoneNumber = "02-737-0455",
             website = "https://www.meta.com/kr/",
-            memo = "메타는 미국의 종합 IT 기업이다. \n 현재 대표이사인 페이스북 창업자 마크 저커버그의 주도로 그를 포함해서 다섯 명이 창업했다",
+            memo = "메타는 미국의 종합 IT 기업이다. \n현재 대표이사인 페이스북 창업자 마크 저커버그의 주도로 그를 포함해서 다섯 명이 창업했다",
             viewType = 0
         ),
         Contact(
             profileImageDrawableId = R.drawable.tesla,
+            uriImage = null,
             name = "Tesla",
             phoneNumber = "080-617-1399",
             website = "https://www.tesla.com/ko_kr",
@@ -56,6 +62,7 @@ object ContactRegistry {
         ),
         Contact(
             profileImageDrawableId = R.drawable.nvidia,
+            uriImage = null,
             name = "NVDIA",
             phoneNumber = "408-486-2000",
             website = "https://www.nvidia.com/ko-kr/",
@@ -64,6 +71,7 @@ object ContactRegistry {
         ),
         Contact(
             profileImageDrawableId = R.drawable.tsmc,
+            uriImage = null,
             name = "TSMC",
             phoneNumber = "070-7450-6047",
             website = "https://www.tsmc.com/english",
