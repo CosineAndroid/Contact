@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         // 툴바 이미지
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false) // 제목표시X 아래에서 추가
+        supportActionBar?.setDisplayShowTitleEnabled(false) // 제목표시X 24번 라인에서 동적으로 추가
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // 뒤로가기 버튼
         binding.toolbar.title = "Contact"
 

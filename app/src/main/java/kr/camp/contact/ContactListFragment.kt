@@ -41,14 +41,14 @@ class ContactListFragment : Fragment() {
             ?.commit()
     }
 
-    // detail fragment에 값 주기
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        // fragment에서 mainActivity의 툴바 가로채서 자기맘대로 커스텀하는 코드
+        // fragment에서 mainActivity의 툴바 커스텀하는 코드(contactlist에서만 메뉴바 선택할 수 있게 )
         val menuHost: MenuHost = requireActivity() // fragment가 속한 activity 반환
         menuHost.addMenuProvider(object : MenuProvider {
             // 툴바 메뉴
@@ -76,7 +76,6 @@ class ContactListFragment : Fragment() {
         return true
             }
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
-
 
         // 리스트 연결
         contactAdapter.contactList = ContactRegistry.contacts as MutableList<Contact>
