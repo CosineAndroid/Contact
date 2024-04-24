@@ -24,16 +24,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/contectImageView"
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="365dp"
                 android:layout_height="300dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/darkgray_corner_button"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
+                app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" >
+
+            <ImageView
+                android:id="@+id/cardviewImageView"
+                android:layout_width="365dp"
+                android:layout_height="300dp"
+                android:src="@drawable/google"/>
+
+            </androidx.cardview.widget.CardView>
 
             <ImageView
                 android:id="@+id/contectNameImageView"
@@ -43,7 +52,7 @@
                 android:src="@drawable/darkgray_corner_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contectImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
             <TextView
                 android:id="@+id/nameTextView"
@@ -109,10 +118,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/mypage_mobile_title"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/mobileImageView"
                 app:layout_constraintTop_toTopOf="@+id/mobileImageView" />
@@ -121,10 +130,12 @@
                 android:id="@+id/mobileContextTextView"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/mypage_mobile_context"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/mobileImageView"
                 app:layout_constraintStart_toStartOf="@+id/mobileTitleTextView"
                 app:layout_constraintTop_toBottomOf="@+id/mobileTitleTextView" />
 
@@ -144,10 +155,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/mypage_homepage_title"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/homepageImageView"
                 app:layout_constraintTop_toTopOf="@+id/homepageImageView" />
@@ -156,10 +167,12 @@
                 android:id="@+id/homepageContextTextView"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/mypage_homepage_context"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/homepageImageView"
                 app:layout_constraintStart_toStartOf="@+id/homepageTitleTextView"
                 app:layout_constraintTop_toBottomOf="@+id/homepageTitleTextView" />
 
@@ -167,7 +180,7 @@
             <ImageView
                 android:id="@+id/memoImageView"
                 android:layout_width="365dp"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="16dp"
                 android:src="@drawable/darkgray_corner_button"
@@ -181,11 +194,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/darkgray_corner_button"
                 android:text="@string/mypage_memo_title"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/memoImageView"
                 app:layout_constraintTop_toTopOf="@+id/memoImageView" />
@@ -194,10 +207,11 @@
                 android:id="@+id/memoContextTextView"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/mypage_memo_context"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/memoImageView"
                 app:layout_constraintStart_toStartOf="@+id/memoTitleTextView"
                 app:layout_constraintTop_toBottomOf="@+id/memoTitleTextView" />
 
@@ -211,12 +225,12 @@
         android:layout_height="65dp"
         android:clickable="true"
         android:backgroundTint="@color/darkblue"
-        android:src="@drawable/plus"
-        app:maxImageSize="30dp"
+        android:src="@drawable/edit"
+        app:maxImageSize="35dp"
         android:tint="@color/white"
         app:fabCustomSize="65dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
