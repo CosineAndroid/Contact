@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ import com.bumptech.glide.Glide
 import kr.camp.contact.data.Contact
 import kr.camp.contact.databinding.MypageDialogBinding
 import kr.camp.contact.registry.ContactRegistry
+import kotlin.math.log
 
 class AddContactDialog : DialogFragment() {
 

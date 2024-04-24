@@ -1,6 +1,7 @@
 package kr.camp.contact
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,8 +35,12 @@ class ContactListFragment : Fragment() {
     // detail fragment에 값 주기
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+
         // 리스트 연결
         contactAdapter.contactList = ContactRegistry.contacts as MutableList<Contact>
+        Log.d("contactList",ContactRegistry.contacts.toString())
+        Log.d("contactList",contactAdapter.contactList.toString())
+
         // 리싸이클러뷰- 어뎁터 연결
         with(binding.recyclerView) {
             this.adapter = contactAdapter

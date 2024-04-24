@@ -119,7 +119,6 @@ class ContactAdapter(private val onClick: (Contact) -> Unit
     // contacts추가 함수
     fun addContact(contact: Contact) {
         ContactRegistry.addContact(contact)
-        contactList.add(contact)
         notifyItemInserted(contactList.size)
     }
 }
