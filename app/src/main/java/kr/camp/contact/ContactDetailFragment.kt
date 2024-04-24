@@ -53,7 +53,7 @@ class ContactDetailFragment : Fragment() {
     }
 
     private fun initView() = with(binding) {
-        profileImageView.setImageResource(contact.profileImageDrawableId)
+        contact.profileImageDrawableId?.let { profileImageView.setImageResource(it) }
 
         nameTextView.text = contact.name
         messageButton.root.text = getString(R.string.contact_detail_message_button)

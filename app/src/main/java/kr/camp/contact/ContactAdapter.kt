@@ -4,12 +4,14 @@ import kr.camp.contact.data.Contact
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import kr.camp.contact.data.Contact.Companion.VIEW_TYPE1
 import kr.camp.contact.data.Contact.Companion.VIEW_TYPE2
 import kr.camp.contact.databinding.ItemType1Binding
 import kr.camp.contact.databinding.ItemType2Binding
 import kr.camp.contact.registry.ContactRegistry
+
 
 class ContactAdapter(
     private val onClick: (Contact) -> Unit
@@ -18,7 +20,7 @@ class ContactAdapter(
     var contactList = mutableListOf<Contact>()
 
     // 뷰홀더1
-    inner class ContactViewHolder1(
+     inner class ContactViewHolder1(
         private var binding: ItemType1Binding,
         val onClick: (Contact) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -32,7 +34,13 @@ class ContactAdapter(
         fun bind1(contact: Contact) = with(binding) {
             // 별 아이콘 클릭 시 색깔변경 & 스낵바 표시
             name.text = contact.name
-            circleImage.setImageResource(contact.profileImageDrawableId)
+            if(contact.profileImageDrawableId != null ) {
+                circleImage.setImageResource(contact.profileImageDrawableId)
+            } else {
+                circleImage.setImageURI(contact.uriImage)
+            }
+
+
 
             var isLiked = false
 
@@ -71,7 +79,11 @@ class ContactAdapter(
 
         fun bind2(contact: Contact) = with(binding) {
             name.text = contact.name
-            circleImage.setImageResource(contact.profileImageDrawableId)
+            if(contact.profileImageDrawableId != null ) {
+                circleImage.setImageResource(contact.profileImageDrawableId)
+            } else {
+                circleImage.setImageURI(contact.uriImage)
+            }
 
             // 별 아이콘 클릭 시 색깔변경 & 스낵바 표시
             var isLiked = false

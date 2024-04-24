@@ -4,14 +4,12 @@ package kr.camp.contact
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +18,6 @@ import com.bumptech.glide.Glide
 import kr.camp.contact.data.Contact
 import kr.camp.contact.databinding.MypageDialogBinding
 import kr.camp.contact.registry.ContactRegistry
-import kotlin.math.log
 
 class AddContactDialog : DialogFragment() {
 
@@ -70,7 +67,8 @@ class AddContactDialog : DialogFragment() {
                 val lastViewType: Int = if (ContactRegistry.contacts.last().viewType == 0) 1 else 0
                 newContact =
                     Contact(
-                        profileImageDrawableId = R.drawable.profile_img,
+                        profileImageDrawableId = null,
+                        uriImage = imageuri,
                         name = nameEditText.text.toString(),
                         phoneNumber = phoneEditText.text.toString(),
                         website = websiteEditText.text.toString(),
@@ -94,6 +92,7 @@ class AddContactDialog : DialogFragment() {
         if (it.resultCode == AppCompatActivity.RESULT_OK && it.data != null) {
             //값 담기
             imageuri = it.data!!.data
+            Log.d("image",imageuri.toString())
 
             //화면에 보여주기
             Glide.with(this)
@@ -102,4 +101,5 @@ class AddContactDialog : DialogFragment() {
                 .into(binding.circleImageView)
         }
     }
+
 }

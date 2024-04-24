@@ -3,9 +3,12 @@ package kr.camp.contact
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kr.camp.contact.data.Contact
@@ -85,6 +88,45 @@ class ContactListFragment : Fragment() {
         }
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // 툴바 이미지
+        val activity = requireActivity() as AppCompatActivity
+
+        activity.supportActionBar?.hide()
+        activity.setSupportActionBar(binding.contactlistToolbar)
+        activity.supportActionBar?.setDisplayShowTitleEnabled(false) // 제목표시X 아래에서 추가
+        activity.supportActionBar?.setDisplayHomeAsUpEnabled(true) // 뒤로가기 버튼
+        binding.contactlistToolbar.title = "Contact"
+
+    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        activity?.menuInflater?.inflate(R.menu.menu_toolbar, menu)
+//        return true
+//    }
+
+    // 툴바 메뉴 클릭이벤트
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> { // 뒤로가기 버튼
+                activity?.finish()
+            }
+            R.id.toolbar_info -> { // 레이아웃 타입 메뉴 띄우기
+                when(item.itemId) {
+                    R.id.first -> {
+
+                    }
+                    R.id.second-> {
+
+                    }
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
     fun setContactButtonVisibility(visibility: Int) {
         binding.addContact.visibility = visibility
