@@ -17,7 +17,12 @@ class ContactDetailFragment : Fragment() {
 
     private lateinit var contact: Contact
 
-    private val mainActivity get() = activity as? MainActivity
+    private val mainActivity by lazy {
+        activity as? MainActivity
+    }
+    private val contactListFragment by lazy {
+        parentFragmentManager.fragments.firstOrNull() as? ContactListFragment
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +41,7 @@ class ContactDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mainActivity?.hideTabLayout()
+        contactListFragment?.setContactButtonVisibility(View.GONE)
         initView()
     }
 
@@ -43,6 +49,7 @@ class ContactDetailFragment : Fragment() {
         super.onDestroyView()
         _binding = null
         mainActivity?.showTabLayout()
+        contactListFragment?.setContactButtonVisibility(View.VISIBLE)
     }
 
     private fun initView() = with(binding) {

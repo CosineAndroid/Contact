@@ -12,19 +12,30 @@ class MyPageFragment : Fragment() {
 
     private val binding by lazy { FragmentMypageBinding.inflate(layoutInflater) }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-
         binding.floatingButton.setOnClickListener {
             val dialog = MyPageDialog()
 
-            dialog.setButtonClickListener(object : MyPageDialog.OnButtonClickListener{
+            dialog.setButtonClickListener(object : MyPageDialog.OnButtonClickListener {
                 override fun onCancelClicked() {
-                    Toast.makeText(context, getString(R.string.mypage_toast_cancel), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        getString(R.string.mypage_toast_cancel),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
-                override fun onSaveClicked(name: String, mobile : String, homepage : String, memo : String) {
-                    with(binding){
+                override fun onSaveClicked(
+                    name: String,
+                    mobile: String,
+                    homepage: String,
+                    memo: String
+                ) {
+                    with(binding) {
                         nameTextView.text = name
                         mobileContextTextView.text = mobile
                         homepageContextTextView.text = homepage
@@ -35,11 +46,6 @@ class MyPageFragment : Fragment() {
             })
             dialog.show(parentFragmentManager, "custom")
         }
-
         return binding.root
-
     }
-
-
-
 }

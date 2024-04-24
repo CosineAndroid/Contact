@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kr.camp.contact.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -27,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.adapter = ViewPagerAdapter(fragmentList, this)
 
         // tabLayout
-        val tabTitle = listOf(getString(R.string.taplayout_contact), getString(R.string.taplayout_mypage))
+        val tabTitle =
+            listOf(getString(R.string.taplayout_contact), getString(R.string.taplayout_mypage))
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = tabTitle[position]
         }.attach()

@@ -37,7 +37,7 @@ class MyPageDialog : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = MypageDialogBinding.inflate(inflater, container, false)
         val view = binding.root
 
@@ -45,7 +45,6 @@ class MyPageDialog : DialogFragment() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         with(binding){
-
             circleImageView.setOnClickListener {
                 // 갤러리 실행
                 val intent = Intent(Intent.ACTION_PICK)
@@ -74,7 +73,6 @@ class MyPageDialog : DialogFragment() {
     private val activityResult: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
-
         //결과 코드 OK , 결가값 null 아니면
         if (it.resultCode == AppCompatActivity.RESULT_OK && it.data != null) {
             //값 담기

@@ -30,7 +30,7 @@ class AddContactDialog : DialogFragment() {
 
     interface OnButtonClickListener {
         fun onCancelClicked()
-        fun onSaveClicked(name: String, mobile : String, homepage : String, memo : String)
+        fun onSaveClicked(name: String, mobile: String, homepage: String, memo: String)
     }
 
     // 클릭 이벤트 설정
@@ -44,14 +44,14 @@ class AddContactDialog : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = MypageDialogBinding.inflate(inflater, container, false)
         val view = binding.root
 
         // 배경 투명하게
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        with(binding){
+        with(binding) {
 
             circleImageView.setOnClickListener {
                 // 갤러리 실행
@@ -67,20 +67,17 @@ class AddContactDialog : DialogFragment() {
 
             saveButton.setOnClickListener {
                 lateinit var newContact: Contact
-                var lastViewType: Int
-                if(ContactRegistry.contacts.last().viewType == 0 ) {
-                    lastViewType = 1
-                } else lastViewType=0
-                
-                newContact  =
+                val lastViewType: Int = if (ContactRegistry.contacts.last().viewType == 0) 1 else 0
+                newContact =
                     Contact(
                         profileImageDrawableId = R.drawable.profile_img,
                         name = nameEditText.text.toString(),
                         phoneNumber = phoneEditText.text.toString(),
                         website = websiteEditText.text.toString(),
                         memo = memoEditText.text.toString(),
-                        viewType = lastViewType)
-                val contactInstance = ContactAdapter{newContact}
+                        viewType = lastViewType
+                    )
+                val contactInstance = ContactAdapter { newContact }
                 contactInstance.addContact(newContact)
                 dismiss()
             }
