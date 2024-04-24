@@ -64,7 +64,7 @@ class AddContactDialog : DialogFragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (isRegularName(name.toString())) {
                     binding.nameEditText.setBackgroundResource(R.drawable.dialog_edittext2)
-                    binding.saveButton.setBackgroundResource(R.drawable.darkblue_corner_button)
+
 
                 } else {
                     binding.nameEditText.setBackgroundResource(R.drawable.dialog_edittext3)
