@@ -12,7 +12,6 @@ import kr.camp.contact.databinding.ItemType1Binding
 import kr.camp.contact.databinding.ItemType2Binding
 import kr.camp.contact.registry.ContactRegistry
 
-
 class ContactAdapter(
     private val onClick: (Contact) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -20,7 +19,7 @@ class ContactAdapter(
     var contactList = mutableListOf<Contact>()
 
     // 뷰홀더1
-     inner class ContactViewHolder1(
+    inner class ContactViewHolder1(
         private var binding: ItemType1Binding,
         val onClick: (Contact) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -34,16 +33,13 @@ class ContactAdapter(
         fun bind1(contact: Contact) = with(binding) {
             // 별 아이콘 클릭 시 색깔변경 & 스낵바 표시
             name.text = contact.name
-            if(contact.profileImageDrawableId != null ) {
+            if (contact.profileImageDrawableId != null) {
                 circleImage.setImageResource(contact.profileImageDrawableId)
             } else {
                 circleImage.setImageURI(contact.uriImage)
             }
 
-
-
             var isLiked = false
-
             star.setImageResource(
                 if (isLiked) {
                     R.drawable.filled_star
@@ -79,7 +75,7 @@ class ContactAdapter(
 
         fun bind2(contact: Contact) = with(binding) {
             name.text = contact.name
-            if(contact.profileImageDrawableId != null ) {
+            if (contact.profileImageDrawableId != null) {
                 circleImage.setImageResource(contact.profileImageDrawableId)
             } else {
                 circleImage.setImageURI(contact.uriImage)

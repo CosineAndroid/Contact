@@ -1,10 +1,8 @@
 package kr.camp.contact.data
 
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import java.net.URI
 
 @Parcelize
 data class Contact(
