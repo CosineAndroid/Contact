@@ -1,5 +1,6 @@
 package kr.camp.contact
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,13 +34,15 @@ class MyPageFragment : Fragment() {
                     name: String,
                     mobile: String,
                     homepage: String,
-                    memo: String
+                    memo: String,
+                    image : Drawable
                 ) {
                     with(binding) {
                         nameTextView.text = name
                         mobileContextTextView.text = mobile
                         homepageContextTextView.text = homepage
                         memoContextTextView.text = memo
+                        cardviewImageView.setImageDrawable(image)
                     }
 
                 }
