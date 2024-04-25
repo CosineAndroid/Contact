@@ -9,7 +9,7 @@ object ContactRegistry {
         Contact(
             profileImageDrawableId = R.drawable.ms,
             uriImage = null,
-            name = "Microsoft",
+            name = "MS",
             phoneNumber = "1577-9700",
             website = "https://www.microsoft.com/ko-kr",
             memo = "미국에 위치한 대규모 IT 기업이다. 오피스와 윈도우를 통해 일반 소비자들을 상대로도 매우 높은 인지도를 갖추고 있다",
@@ -36,7 +36,7 @@ object ContactRegistry {
         Contact(
             profileImageDrawableId = R.drawable.amazon,
             uriImage = null,
-            name = "Amazon",
+            name = "AMZN",
             phoneNumber = "1-800-280-4331",
             website = "https://www.amazon.com/",
             memo = "아마존닷컴은 미국의 종합 인터넷 플랫폼이다. 세계 최대 규모의 온라인 쇼핑몰과 클라우드 컴퓨팅 서비스를 제공하고 있다.",

@@ -2,13 +2,8 @@ package kr.camp.contact
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import kr.camp.contact.data.Contact
 import kr.camp.contact.databinding.ContactDetailCardBinding
@@ -45,7 +40,7 @@ class ContactDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainActivity?.hideTabLayout()
+        mainActivity?.hideBar()
         contactListFragment?.setContactButtonVisibility(View.GONE)
         initView()
     }
@@ -53,13 +48,17 @@ class ContactDetailFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        mainActivity?.showTabLayout()
+        mainActivity?.showBar()
         contactListFragment?.setContactButtonVisibility(View.VISIBLE)
     }
 
     private fun initView() = with(binding) {
-        contact.uriImage?.let { profileImageView.setImageURI(it) }
-
+        val profileImageDrawableId = contact.profileImageDrawableId
+        if (profileImageDrawableId != null) {
+            profileImageView.setImageResource(profileImageDrawableId)
+        } else {
+            contact.uriImage?.let { profileImageView.setImageURI(it) }
+        }
         nameTextView.text = contact.name
         messageButton.root.text = getString(R.string.contact_detail_message_button)
         callButton.root.text = getString(R.string.contact_detail_call_button)

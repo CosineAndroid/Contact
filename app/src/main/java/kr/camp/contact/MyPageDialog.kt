@@ -3,6 +3,7 @@ package kr.camp.contact
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,7 +24,7 @@ class MyPageDialog : DialogFragment() {
 
     interface OnButtonClickListener {
         fun onCancelClicked()
-        fun onSaveClicked(name: String, mobile : String, homepage : String, memo : String)
+        fun onSaveClicked(name: String, mobile: String, homepage: String, memo: String, image : Drawable)
     }
 
     // 클릭 이벤트 설정
@@ -62,7 +63,9 @@ class MyPageDialog : DialogFragment() {
                     nameEditText.text.toString(),
                     phoneEditText.text.toString(),
                     websiteEditText.text.toString(),
-                    memoEditText.text.toString())
+                    memoEditText.text.toString(),
+                    circleImageView.drawable
+                )
                 dismiss()
             }
         }
@@ -81,7 +84,7 @@ class MyPageDialog : DialogFragment() {
             //화면에 보여주기
             Glide.with(this)
                 .load(imageuri)
-                .fitCenter()
+                .centerCrop()
                 .into(binding.circleImageView)
         }
     }

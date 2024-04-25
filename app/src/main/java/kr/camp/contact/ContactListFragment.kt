@@ -1,5 +1,6 @@
 package kr.camp.contact
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -25,8 +26,7 @@ class ContactListFragment : Fragment() {
 
     private val binding by lazy { FragmentContactlistBinding.inflate(layoutInflater) }
 
-
-    private val contactAdapter: ContactAdapter by lazy {
+        private val contactAdapter: ContactAdapter by lazy {
         ContactAdapter { item ->
             adapterOnClick(item)
         }
@@ -59,25 +59,16 @@ class ContactListFragment : Fragment() {
 
             // 툴바 클릭이벤트
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                when (menuItem.itemId) {
-            android.R.id.home -> { // 뒤로가기 버튼
-                activity?.finish()
-            }
-            R.id.toolbar_info -> { // 레이아웃 타입 메뉴 띄우기
                 when(menuItem.itemId) {
                     R.id.first -> {
-                        binding.recyclerView.layoutManager = LinearLayoutManager(
-                            requireContext(), LinearLayoutManager.VERTICAL, false
-                        )
+                        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                     }
                     R.id.second-> {
-//                        binding.recyclerView.layoutManager = GridLayoutManager(
-//                            requireContext(),  GridLayoutManager.DEFAULT_SPAN_COUNT, false
-//                        )
+                        binding.recyclerView.layoutManager =GridLayoutManager(requireContext(),2)
                     }
                 }
-            }
-        }
+
+
         return true
             }
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
@@ -113,7 +104,7 @@ class ContactListFragment : Fragment() {
                     name: String,
                     mobile: String,
                     homepage: String,
-                    memo: String
+                    memo: String,
                 ) {
                     Toast.makeText(
                         context,

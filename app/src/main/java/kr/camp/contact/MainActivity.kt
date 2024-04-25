@@ -12,6 +12,7 @@ import kr.camp.contact.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewPager()
@@ -20,9 +21,7 @@ class MainActivity : AppCompatActivity() {
         // 툴바 이미지
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false) // 제목표시X 24번 라인에서 동적으로 추가
-        supportActionBar?.setDisplayHomeAsUpEnabled(true) // 뒤로가기 버튼
-        binding.toolbar.title = "Contact"
-
+        binding.toolbar.title = getString(R.string.tablayout_contact)
     }
 
     // 툴바 메뉴
@@ -31,19 +30,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    // 툴바 메뉴 클릭이벤트
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> { // 뒤로가기 버튼
-                finish()
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-
     private fun viewPager() {
-
         val fragmentList = ArrayList<Fragment>()
         fragmentList.add(ContactListFragment())
         fragmentList.add(MyPageFragment())
@@ -51,23 +38,27 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.adapter = ViewPagerAdapter(fragmentList, this)
 
         // tabLayout
-        val tabTitle =
-            listOf(getString(R.string.taplayout_contact), getString(R.string.taplayout_mypage))
+        val tabTitle = listOf(getString(R.string.tablayout_contact), getString(R.string.tablayout_mypage))
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = tabTitle[position]
         }.attach()
     }
 
-    fun showTabLayout() = with(binding) {
+    fun showBar() = with(binding) {
+        toolbar.visibility = View.VISIBLE
         tabLayout.visibility = View.VISIBLE
         viewPager.setUserInputEnabled(true)
     }
 
-    fun hideTabLayout() = with(binding) {
+    fun hideBar() = with(binding) {
+        toolbar.visibility = View.GONE
         tabLayout.visibility = View.GONE
         viewPager.setUserInputEnabled(false)
     }
+
 }
+
+
 
 
 
