@@ -53,12 +53,9 @@ class ContactDetailFragment : Fragment() {
     }
 
     private fun initView() = with(binding) {
-        val profileImageDrawableId = contact.profileImageDrawableId
-        if (profileImageDrawableId != null) {
-            profileImageView.setImageResource(profileImageDrawableId)
-        } else {
-            contact.uriImage?.let { profileImageView.setImageURI(it) }
-        }
+        contact.profileImageDrawableId?.let(profileImageView::setImageResource)
+            ?: contact.uriImage?.let(profileImageView::setImageURI)
+
         nameTextView.text = contact.name
         messageButton.root.text = getString(R.string.contact_detail_message_button)
         callButton.root.text = getString(R.string.contact_detail_call_button)
