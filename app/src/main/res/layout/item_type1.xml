@@ -37,6 +37,7 @@
         android:id="@+id/star"
         android:layout_width="25dp"
         android:layout_height="25dp"
+        android:layout_marginEnd="16dp"
         android:src="@drawable/empty_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

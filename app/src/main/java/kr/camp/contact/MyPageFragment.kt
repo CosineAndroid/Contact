@@ -11,13 +11,15 @@ import kr.camp.contact.databinding.FragmentMypageBinding
 
 class MyPageFragment : Fragment() {
 
-    private val binding by lazy { FragmentMypageBinding.inflate(layoutInflater) }
+    private var _binding: FragmentMypageBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentMypageBinding.inflate(inflater, container, false)
         binding.floatingButton.setOnClickListener {
             val dialog = MyPageDialog()
 
@@ -35,7 +37,7 @@ class MyPageFragment : Fragment() {
                     mobile: String,
                     homepage: String,
                     memo: String,
-                    image : Drawable
+                    image: Drawable
                 ) {
                     with(binding) {
                         nameTextView.text = name
@@ -50,5 +52,10 @@ class MyPageFragment : Fragment() {
             dialog.show(parentFragmentManager, "custom")
         }
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

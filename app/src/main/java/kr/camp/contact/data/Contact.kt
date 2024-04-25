@@ -12,7 +12,8 @@ data class Contact(
     val phoneNumber: String,
     val website: String,
     val memo: String,
-    val viewType: Int
+    val viewType: Int,
+    var showStar: Boolean = true
 ) : Parcelable {
 
     companion object {

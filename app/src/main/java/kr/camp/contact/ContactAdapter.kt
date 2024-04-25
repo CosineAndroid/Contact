@@ -1,4 +1,6 @@
 package kr.camp.contact
+
+import android.annotation.SuppressLint
 import kr.camp.contact.data.Contact
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +21,6 @@ class ContactAdapter(
 
     var contactList = mutableListOf<Contact>()
 
-
     // 뷰홀더1
     inner class ContactViewHolder1(
         private var binding: ItemType1Binding,
@@ -33,7 +34,6 @@ class ContactAdapter(
         }
 
         fun bind1(contact: Contact) = with(binding) {
-
             // 별 아이콘 클릭 시 색깔변경 & 스낵바 표시
             name.text = contact.name
             if (contact.profileImageDrawableId != null) {
@@ -42,24 +42,29 @@ class ContactAdapter(
                 circleImage.setImageURI(contact.uriImage)
             }
 
-            var isLiked = false
-            star.setImageResource(
-                if (isLiked) {
-                    R.drawable.filled_star
-                } else {
-                    R.drawable.empty_star
+            if (contact.showStar) {
+                star.visibility = View.VISIBLE
+                var isLiked = false
+                star.setImageResource(
+                    if (isLiked) {
+                        R.drawable.filled_star
+                    } else {
+                        R.drawable.empty_star
+                    }
+                )
+                star.setOnClickListener {
+                    if (!isLiked) { // false 일 경우, 눌렀을 때 true로 바뀌면서 색깔채워넣기
+                        star.setImageResource(R.drawable.filled_star)
+                        Snackbar.make(type1, "관심 기업에 추가되었습니다.", Snackbar.LENGTH_SHORT).show()
+                        isLiked = true
+                    } else {
+                        star.setImageResource(R.drawable.empty_star)
+                        Snackbar.make(type1, "관심 기업에서 해제되었습니다.", Snackbar.LENGTH_SHORT).show()
+                        isLiked = false
+                    }
                 }
-            )
-            star.setOnClickListener {
-                if (!isLiked) { // false 일 경우, 눌렀을 때 true로 바뀌면서 색깔채워넣기
-                    star.setImageResource(R.drawable.filled_star)
-                    Snackbar.make(type1, "관심 기업에 추가되었습니다.", Snackbar.LENGTH_SHORT).show()
-                    isLiked = true
-                } else {
-                    star.setImageResource(R.drawable.empty_star)
-                    Snackbar.make(type1, "관심 기업에서 해제되었습니다.", Snackbar.LENGTH_SHORT).show()
-                    isLiked = false
-                }
+            } else {
+                star.visibility = View.GONE
             }
         }
     }
@@ -84,34 +89,37 @@ class ContactAdapter(
                 circleImage.setImageURI(contact.uriImage)
             }
 
-            // 별 아이콘 클릭 시 색깔변경 & 스낵바 표시
-            var isLiked = false
-            star.setImageResource(
-                if (isLiked) {
-                    R.drawable.filled_star
-                } else {
-                    R.drawable.empty_star
+            if (contact.showStar) {
+                star.visibility = View.VISIBLE
+                // 별 아이콘 클릭 시 색깔변경 & 스낵바 표시
+                var isLiked = false
+                star.setImageResource(
+                    if (isLiked) {
+                        R.drawable.filled_star
+                    } else {
+                        R.drawable.empty_star
+                    }
+                )
+                star.setOnClickListener {
+                    if (!isLiked) { // false 일 경우, 눌렀을 때 true로 바뀌면서 색깔채워넣기
+                        star.setImageResource(R.drawable.filled_star)
+                        Snackbar.make(type2, "관심 기업에 추가되었습니다.", Snackbar.LENGTH_SHORT).show()
+                        isLiked = true
+                    } else {
+                        star.setImageResource(R.drawable.empty_star)
+                        Snackbar.make(type2, "관심 기업에서 해제되었습니다.", Snackbar.LENGTH_SHORT).show()
+                        isLiked = false
+                    }
                 }
-            )
-            star.setOnClickListener {
-                if (!isLiked) { // false 일 경우, 눌렀을 때 true로 바뀌면서 색깔채워넣기
-                    star.setImageResource(R.drawable.filled_star)
-                    Snackbar.make(type2, "관심 기업에 추가되었습니다.", Snackbar.LENGTH_SHORT).show()
-                    isLiked = true
-                } else {
-                    star.setImageResource(R.drawable.empty_star)
-                    Snackbar.make(type2, "관심 기업에서 해제되었습니다.", Snackbar.LENGTH_SHORT).show()
-                    isLiked = false
-                }
+            } else {
+                star.visibility = View.GONE
             }
         }
     }
 
-
     override fun getItemViewType(position: Int): Int {
         return contactList[position].viewType // positon을 when으로 빼지않고, 각 position의 type값을 받아와서 확장성있게 사용하기.
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -142,7 +150,6 @@ class ContactAdapter(
         return contactList.size
     }
 
-
     override fun onItemMoved(fromPosition: Int, toPosition: Int) {
         Collections.swap(contactList, fromPosition, toPosition)
         notifyItemMoved(fromPosition, toPosition)
@@ -155,11 +162,16 @@ class ContactAdapter(
 
     }
 
-
     // contacts추가 함수
     fun addContact(contact: Contact) {
         ContactRegistry.addContact(contact)
         notifyItemInserted(contactList.size)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setStarVisibility(value: Boolean) {
+        contactList.forEach { it.showStar = value }
+        notifyDataSetChanged()
     }
 }
 

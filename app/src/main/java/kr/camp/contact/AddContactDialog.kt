@@ -22,13 +22,13 @@ import kr.camp.contact.databinding.MypageDialogBinding
 import kr.camp.contact.registry.ContactRegistry
 import java.util.regex.Pattern
 
-class AddContactDialog : DialogFragment() {
+class AddContactDialog(
+    private val starValue: () -> Boolean
+) : DialogFragment() {
 
     private var _binding: MypageDialogBinding? = null
     private val binding get() = _binding!!
     private var imageuri: Uri? = null
-
-
 
     interface OnButtonClickListener {
         fun onCancelClicked()
@@ -56,10 +56,8 @@ class AddContactDialog : DialogFragment() {
         val website = binding.websiteEditText.text
         binding.saveButton.isEnabled = false
 
-
         binding.nameEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (isRegularName(name.toString())) {
@@ -72,16 +70,12 @@ class AddContactDialog : DialogFragment() {
                     binding.saveButton.isEnabled = false
                 }
             }
-            override fun afterTextChanged(s: Editable?) {
-            }
-        }
-        )
 
-
+            override fun afterTextChanged(s: Editable?) {}
+        })
 
         binding.phoneEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (isRegularPhoneNumber(phoneNumber.toString())) {
@@ -95,64 +89,51 @@ class AddContactDialog : DialogFragment() {
                     binding.saveButton.isEnabled = false
                 }
             }
-            override fun afterTextChanged(s: Editable?) {
-            }
-        }
-        )
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
 
         binding.websiteEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (isRegularWebsite(website.toString())) {
                     binding.websiteEditText.setBackgroundResource(R.drawable.dialog_edittext2)
-
                 } else {
                     binding.websiteEditText.setBackgroundResource(R.drawable.dialog_edittext3)
                 }
             }
-            override fun afterTextChanged(s: Editable?) {
-            }
 
-        }
-        )
-
-
-
-
-
+            override fun afterTextChanged(s: Editable?) {}
+        })
 
         // 배경 투명하게
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         with(binding) {
-
             circleImageView.setOnClickListener {
                 // 갤러리 실행
                 val intent = Intent(Intent.ACTION_PICK)
                 intent.type = "image/*"
                 activityResult.launch(intent)
             }
-
             cencelButton.setOnClickListener {
                 buttonClickListener.onCancelClicked()
                 dismiss()
             }
-
             saveButton.setOnClickListener {
-                lateinit var newContact: Contact
                 val lastViewType: Int = if (ContactRegistry.contacts.last().viewType == 0) 1 else 0
-                newContact =
-                    Contact(
-                        profileImageDrawableId = null,
-                        uriImage = imageuri,
-                        name = nameEditText.text.toString(),
-                        phoneNumber = phoneEditText.text.toString(),
-                        website = websiteEditText.text.toString(),
-                        memo = memoEditText.text.toString(),
-                        viewType = lastViewType
-                    )
+                val starValue = starValue()
+                val newContact = Contact(
+                    profileImageDrawableId = null,
+                    uriImage = imageuri,
+                    name = nameEditText.text.toString(),
+                    phoneNumber = phoneEditText.text.toString(),
+                    website = websiteEditText.text.toString(),
+                    memo = memoEditText.text.toString(),
+                    viewType = lastViewType,
+                    showStar = starValue
+                )
                 val contactInstance = ContactAdapter { newContact }
                 contactInstance.addContact(newContact)
                 dismiss()
@@ -165,12 +146,11 @@ class AddContactDialog : DialogFragment() {
     private val activityResult: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
-
         //결과 코드 OK , 결가값 null 아니면
         if (it.resultCode == AppCompatActivity.RESULT_OK && it.data != null) {
             //값 담기
             imageuri = it.data!!.data
-            Log.d("image",imageuri.toString())
+            Log.d("image", imageuri.toString())
 
             //화면에 보여주기
             Glide.with(this)
@@ -196,7 +176,4 @@ class AddContactDialog : DialogFragment() {
 
         return Pattern.matches(websitePattern, website)
     }
-
-
-
 }
