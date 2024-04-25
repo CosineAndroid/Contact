@@ -1,6 +1,6 @@
 package kr.camp.contact
 
-import android.widget.Toast
+import android.graphics.Canvas
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +14,7 @@ class ItemTouchHelperCallback(
         fun onItemMoved(fromPosition: Int, toPosition: Int)
         // Swipe할 때
         fun onItemSwiped(position: Int)
+
     }
 
 
@@ -50,9 +51,28 @@ class ItemTouchHelperCallback(
 
     //  Swipe할 때 호출": 전체 swipe해서 삭제하는 경우(반만 swipe하고 싶으면 onChildDrqw override 후, item.xml도 새롭게 바꿔야 함.)
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        val position: Int = viewHolder.adapterPosition
-        itemMoveListener.onItemSwiped(position)
+        itemMoveListener.onItemSwiped(viewHolder.adapterPosition)
+
     }
+
+    override fun onChildDraw(canvas: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
+                             dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+            val viewItem = viewHolder.itemView
+            // 양수이면 오른쪽 스와이프
+            if(dX > 0 ) {
+                SwipeBackgroundHelper.paintDrawCommandToStart(
+                    canvas,
+                    viewItem,
+                    R.drawable.contact_detail_button,
+                    R.color.darkblue,
+                    dX
+                )
+            }
+        }
+        super.onChildDraw(canvas, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+    }
+
 
     override fun isLongPressDragEnabled(): Boolean = false
 }

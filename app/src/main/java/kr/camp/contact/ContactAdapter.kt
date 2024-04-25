@@ -1,6 +1,7 @@
 package kr.camp.contact
 import kr.camp.contact.data.Contact
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -147,11 +148,12 @@ class ContactAdapter(
         notifyItemMoved(fromPosition, toPosition)
     }
 
+    // swipe시 항목제거 후, snackbar 띄우기
     override fun onItemSwiped(position: Int) {
         contactList.removeAt(position)
         notifyItemRemoved(position)
-    }
 
+    }
 
 
     // contacts추가 함수
@@ -160,6 +162,10 @@ class ContactAdapter(
         notifyItemInserted(contactList.size)
     }
 }
+
+
+
+
 
 
 

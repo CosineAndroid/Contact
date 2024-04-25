@@ -1,5 +1,6 @@
 package kr.camp.contact
 
+import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.manager.Lifecycle
+import com.google.android.material.snackbar.Snackbar
 import kr.camp.contact.data.Contact
 import kr.camp.contact.databinding.FragmentContactlistBinding
 import kr.camp.contact.registry.ContactRegistry
@@ -126,6 +128,7 @@ class ContactListFragment : Fragment() {
         }
         return binding.root
     }
+
 
 
     fun setContactButtonVisibility(visibility: Int) {
