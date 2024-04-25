@@ -30,16 +30,6 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    // 툴바 메뉴 클릭이벤트
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> { // 뒤로가기 버튼
-                finish()
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     private fun viewPager() {
         val fragmentList = ArrayList<Fragment>()
         fragmentList.add(ContactListFragment())
@@ -65,7 +55,10 @@ class MainActivity : AppCompatActivity() {
         tabLayout.visibility = View.GONE
         viewPager.setUserInputEnabled(false)
     }
+
 }
+
+
 
 
 

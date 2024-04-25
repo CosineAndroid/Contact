@@ -1,5 +1,6 @@
 package kr.camp.contact
 
+import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
@@ -15,8 +16,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.manager.Lifecycle
+import com.google.android.material.snackbar.Snackbar
 import kr.camp.contact.data.Contact
 import kr.camp.contact.databinding.FragmentContactlistBinding
 import kr.camp.contact.registry.ContactRegistry
@@ -25,8 +30,7 @@ class ContactListFragment : Fragment() {
 
     private val binding by lazy { FragmentContactlistBinding.inflate(layoutInflater) }
 
-
-    private val contactAdapter: ContactAdapter by lazy {
+        private val contactAdapter: ContactAdapter by lazy {
         ContactAdapter { item ->
             adapterOnClick(item)
         }
@@ -59,21 +63,16 @@ class ContactListFragment : Fragment() {
 
             // 툴바 클릭이벤트
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                when (menuItem.itemId) {
-            android.R.id.home -> { // 뒤로가기 버튼
-                activity?.finish()
-            }
-            R.id.toolbar_info -> { // 레이아웃 타입 메뉴 띄우기
                 when(menuItem.itemId) {
                     R.id.first -> {
-
+                        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                     }
                     R.id.second-> {
-
+                        binding.recyclerView.layoutManager =GridLayoutManager(requireContext(),2)
                     }
                 }
-            }
-        }
+
+
         return true
             }
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
@@ -91,6 +90,12 @@ class ContactListFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         ) // this를 쓸경우 mainAcrtivity의 context를 참조하게 돼서 안됨.
+
+
+        // 리싸이클러뷰 - 아이템터치헬퍼 - 아이템터치헬퍼콜백   ⇒ 연결
+        val itemTouchHelperCallback = ItemTouchHelperCallback(contactAdapter)
+        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.recyclerView)
+
 
         // add 버튼 클릭
         binding.addContact.setOnClickListener {
@@ -123,6 +128,7 @@ class ContactListFragment : Fragment() {
         }
         return binding.root
     }
+
 
 
     fun setContactButtonVisibility(visibility: Int) {
