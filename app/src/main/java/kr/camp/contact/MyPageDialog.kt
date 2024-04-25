@@ -118,6 +118,9 @@ class MyPageDialog : DialogFragment() {
         // 배경 투명하게
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+        // 화면터치해도 다이얼로그 사라지지 않게
+        isCancelable = false
+
         with(binding){
             circleImageView.setOnClickListener {
                 // 갤러리 실행
