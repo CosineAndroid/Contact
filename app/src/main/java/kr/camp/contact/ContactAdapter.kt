@@ -1,22 +1,23 @@
 package kr.camp.contact
-
 import kr.camp.contact.data.Contact
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import kr.camp.contact.data.Contact.Companion.VIEW_TYPE1
 import kr.camp.contact.data.Contact.Companion.VIEW_TYPE2
 import kr.camp.contact.databinding.ItemType1Binding
 import kr.camp.contact.databinding.ItemType2Binding
 import kr.camp.contact.registry.ContactRegistry
+import java.util.Collections
 
 class ContactAdapter(
     private val onClick: (Contact) -> Unit
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
+    ItemTouchHelperCallback.OnItemMoveListener {
 
     var contactList = mutableListOf<Contact>()
+
 
     // 뷰홀더1
     inner class ContactViewHolder1(
@@ -139,6 +140,19 @@ class ContactAdapter(
     override fun getItemCount(): Int {
         return contactList.size
     }
+
+
+    override fun onItemMoved(fromPosition: Int, toPosition: Int) {
+        Collections.swap(contactList, fromPosition, toPosition)
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onItemSwiped(position: Int) {
+        contactList.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+
 
     // contacts추가 함수
     fun addContact(contact: Contact) {

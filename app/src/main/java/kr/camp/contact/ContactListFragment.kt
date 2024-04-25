@@ -16,7 +16,9 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.manager.Lifecycle
 import kr.camp.contact.data.Contact
 import kr.camp.contact.databinding.FragmentContactlistBinding
@@ -86,6 +88,12 @@ class ContactListFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         ) // this를 쓸경우 mainAcrtivity의 context를 참조하게 돼서 안됨.
+
+
+        // 리싸이클러뷰 - 아이템터치헬퍼 - 아이템터치헬퍼콜백   ⇒ 연결
+        val itemTouchHelperCallback = ItemTouchHelperCallback(contactAdapter)
+        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.recyclerView)
+
 
         // add 버튼 클릭
         binding.addContact.setOnClickListener {
