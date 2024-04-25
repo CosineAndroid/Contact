@@ -1,9 +1,13 @@
 package kr.camp.contact
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Canvas
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import kr.camp.contact.data.Contact
 
 class ItemTouchHelperCallback(
     private val itemMoveListener: OnItemMoveListener
@@ -56,6 +60,7 @@ class ItemTouchHelperCallback(
         itemMoveListener.onItemSwiped(viewHolder.adapterPosition)
     }
 
+    // swipe 백그라운드 설정
     override fun onChildDraw(
         canvas: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
         dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean

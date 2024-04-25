@@ -1,7 +1,6 @@
 package kr.camp.contact
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -24,8 +23,10 @@ class ContactListFragment : Fragment() {
     private var _binding: FragmentContactlistBinding? = null
     private val binding get() = _binding!!
 
+    // = fun getBinding():Binding = _binding!!
+
     private val contactAdapter: ContactAdapter by lazy {
-        ContactAdapter { item ->
+        ContactAdapter(requireContext()) { item ->
             adapterOnClick(item)
         }
     }
@@ -93,6 +94,7 @@ class ContactListFragment : Fragment() {
         val itemTouchHelperCallback = ItemTouchHelperCallback(contactAdapter)
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.recyclerView)
 
+
         // add 버튼 클릭
         binding.addContact.setOnClickListener {
             val dialog = AddContactDialog {
@@ -123,6 +125,8 @@ class ContactListFragment : Fragment() {
 
             dialog.show(parentFragmentManager, "custom")
         }
+
+
         return binding.root
     }
 
@@ -135,5 +139,7 @@ class ContactListFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }
 

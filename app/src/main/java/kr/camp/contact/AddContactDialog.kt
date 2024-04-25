@@ -134,7 +134,7 @@ class AddContactDialog(
                     viewType = lastViewType,
                     showStar = starValue
                 )
-                val contactInstance = ContactAdapter { newContact }
+                val contactInstance = ContactAdapter(context) { newContact }
                 contactInstance.addContact(newContact)
                 dismiss()
             }
