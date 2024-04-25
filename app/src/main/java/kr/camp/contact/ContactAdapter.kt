@@ -1,6 +1,9 @@
 package kr.camp.contact
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import kr.camp.contact.data.Contact
 import android.view.LayoutInflater
 import android.view.View
@@ -15,11 +18,17 @@ import kr.camp.contact.registry.ContactRegistry
 import java.util.Collections
 
 class ContactAdapter(
+    private val context: Context?,
     private val onClick: (Contact) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     ItemTouchHelperCallback.OnItemMoveListener {
 
     var contactList = mutableListOf<Contact>()
+
+    fun startActivity(intent: Intent) {
+        context?.startActivity(intent)
+    }
+
 
     // 뷰홀더1
     inner class ContactViewHolder1(
@@ -155,11 +164,12 @@ class ContactAdapter(
         notifyItemMoved(fromPosition, toPosition)
     }
 
-    // swipe시 항목제거 후, snackbar 띄우기
-    override fun onItemSwiped(position: Int) {
-        contactList.removeAt(position)
-        notifyItemRemoved(position)
-
+    // swipe시 전화 연결
+    override fun onItemSwiped( position: Int) {
+        val contactNumber = contactList[position].phoneNumber
+        val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${contactNumber}"))
+        startActivity(intent) //  생성자로 context 가져오기
+        notifyDataSetChanged()
     }
 
     // contacts추가 함수
