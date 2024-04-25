@@ -2,7 +2,6 @@ package kr.camp.contact
 
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -31,10 +30,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun viewPager() {
-        val fragmentList = ArrayList<Fragment>()
-        fragmentList.add(ContactListFragment())
-        fragmentList.add(MyPageFragment())
-
+        val fragmentList = ArrayList<Fragment>().apply {
+            add(ContactListFragment())
+            add(MyPageFragment())
+        }
         binding.viewPager.adapter = ViewPagerAdapter(fragmentList, this)
 
         // tabLayout
@@ -55,17 +54,4 @@ class MainActivity : AppCompatActivity() {
         tabLayout.visibility = View.GONE
         viewPager.setUserInputEnabled(false)
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-

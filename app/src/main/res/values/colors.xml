@@ -12,6 +12,7 @@
     <color name="background">#1C1D22</color>
     <color name="darkgray">#27272F</color>
     <color name="darkblue">#5864F2</color>
+    <color name="swipe">#313CBD</color>
     <color name="dialog_edit_text">#36363F</color>
     <color name="dialog_button">#797981</color>
 </resources>

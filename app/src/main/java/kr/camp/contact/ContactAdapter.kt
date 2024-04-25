@@ -29,7 +29,6 @@ class ContactAdapter(
         context?.startActivity(intent)
     }
 
-
     // 뷰홀더1
     inner class ContactViewHolder1(
         private var binding: ItemType1Binding,
@@ -165,11 +164,11 @@ class ContactAdapter(
     }
 
     // swipe시 전화 연결
-    override fun onItemSwiped( position: Int) {
+    override fun onItemSwiped(position: Int) {
         val contactNumber = contactList[position].phoneNumber
         val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${contactNumber}"))
         startActivity(intent) //  생성자로 context 가져오기
-        notifyDataSetChanged()
+        notifyItemChanged(position)
     }
 
     // contacts추가 함수
@@ -184,12 +183,3 @@ class ContactAdapter(
         notifyDataSetChanged()
     }
 }
-
-
-
-
-
-
-
-
-

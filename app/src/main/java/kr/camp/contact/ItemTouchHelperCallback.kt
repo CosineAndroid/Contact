@@ -1,13 +1,9 @@
 package kr.camp.contact
 
-import android.content.Context
-import android.content.Intent
 import android.graphics.Canvas
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import kr.camp.contact.data.Contact
 
 class ItemTouchHelperCallback(
     private val itemMoveListener: OnItemMoveListener
@@ -20,7 +16,6 @@ class ItemTouchHelperCallback(
         // Swipe할 때
         fun onItemSwiped(position: Int)
     }
-
 
     // 어떤 이벤트 허용할 것인가(SWIPE or DRAG) ※ swipe: 짧은 접촉 / drag: 긴 접촉
     override fun getMovementFlags(
@@ -73,7 +68,7 @@ class ItemTouchHelperCallback(
                     canvas,
                     viewItem,
                     R.drawable.contact_detail_button,
-                    R.color.darkblue,
+                    R.color.swipe,
                     dX
                 )
             }
