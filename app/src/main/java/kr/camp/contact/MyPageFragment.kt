@@ -39,9 +39,9 @@ class MyPageFragment : Fragment() {
                 ) {
                     with(binding) {
                         nameTextView.text = name
-                        mobileContextTextView.text = mobile
-                        homepageContextTextView.text = homepage
-                        memoContextTextView.text = memo
+                        mypagePhoneCardView.descriptionTextView.text = mobile
+                        mypagHomepageCardView.descriptionTextView.text = homepage
+                        mypageMemoCardView.descriptionTextView.text = memo
                         cardviewImageView.setImageDrawable(image)
                     }
 
