@@ -45,7 +45,7 @@
             <ImageView
                 android:id="@+id/contectNameImageView"
                 android:layout_width="365dp"
-                android:layout_height="200dp"
+                android:layout_height="130dp"
                 android:layout_marginTop="15dp"
                 android:src="@drawable/darkgray_corner_button"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -56,50 +56,14 @@
                 android:id="@+id/nameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:text="@string/mypage_name"
                 android:textColor="@color/white"
                 android:textSize="50sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/contectNameImageView"
                 app:layout_constraintEnd_toEndOf="@+id/contectNameImageView"
                 app:layout_constraintStart_toStartOf="@+id/contectNameImageView"
                 app:layout_constraintTop_toTopOf="@+id/contectNameImageView" />
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constrainlayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                app:layout_constraintEnd_toEndOf="@+id/contectNameImageView"
-                app:layout_constraintStart_toStartOf="@+id/contectNameImageView"
-                app:layout_constraintTop_toBottomOf="@+id/nameTextView">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/messageButton"
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/darkblue_corner_button"
-                    android:text="@string/mypage_message"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toStartOf="@+id/callButton"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/callButton"
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/darkblue_corner_button"
-                    android:text="@string/mypage_call"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/messageButton"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <include
                 android:id="@+id/mypagePhoneCardView"

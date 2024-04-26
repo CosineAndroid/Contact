@@ -45,6 +45,7 @@ class ContactDetailFragment : Fragment() {
         mainActivity?.hideBar()
         contactListFragment?.setContactButtonVisibility(View.GONE)
         initView()
+        callandMessage()
         binding.websiteCardView.descriptionTextView.setOnClickListener {
             openWebSite()
         }
@@ -80,6 +81,17 @@ class ContactDetailFragment : Fragment() {
     private fun ContactDetailCardBinding.init(stringId: Int, description: String) {
         titleTextView.text = getString(stringId)
         descriptionTextView.text = description
+    }
+
+    private fun callandMessage() = with(binding){
+        callButton.root.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${contact.phoneNumber}"))
+            startActivity(intent)
+        }
+        messageButton.root.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:${contact.phoneNumber}"))
+            startActivity(intent)
+        }
     }
 
     companion object {

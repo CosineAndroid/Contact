@@ -23,10 +23,14 @@ class ContactListFragment : Fragment() {
     private var _binding: FragmentContactlistBinding? = null
     private val binding get() = _binding!!
 
-    // = fun getBinding():Binding = _binding!!
-
     private val contactAdapter: ContactAdapter by lazy {
         ContactAdapter(requireContext()) { item ->
+            adapterOnClick(item)
+        }
+    }
+
+    private val gridAdapter: GridRecyclerViewAdapter by lazy {
+        GridRecyclerViewAdapter{ item ->
             adapterOnClick(item)
         }
     }
@@ -59,19 +63,14 @@ class ContactListFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
                     R.id.first -> {
-                        val recyclerView = binding.recyclerView
-                        recyclerView.layoutManager = LinearLayoutManager(
-                            requireContext(),
-                            LinearLayoutManager.VERTICAL,
-                            false
-                        )
-                        (recyclerView.adapter as ContactAdapter).setStarVisibility(true)
+                        binding.recyclerView.adapter = contactAdapter
+                        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                        (binding.recyclerView.adapter as ContactAdapter).setStarVisibility(true)
                     }
 
                     R.id.second -> {
-                        val recyclerView = binding.recyclerView
-                        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-                        (recyclerView.adapter as ContactAdapter).setStarVisibility(false)
+                        binding.recyclerView.adapter = gridAdapter
+                        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
                     }
                 }
                 return true
@@ -80,11 +79,13 @@ class ContactListFragment : Fragment() {
 
         // 리스트 연결
         contactAdapter.contactList = ContactRegistry.contacts as MutableList<Contact>
+        gridAdapter.contactList = ContactRegistry.contacts as MutableList<Contact>
 
         // 리싸이클러뷰- 어뎁터 연결
         with(binding.recyclerView) {
             this.adapter = contactAdapter
         }
+
         // 레이아웃 메니저
         binding.recyclerView.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
