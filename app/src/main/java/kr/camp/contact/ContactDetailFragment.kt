@@ -46,7 +46,7 @@ class ContactDetailFragment : Fragment() {
         contactListFragment?.setContactButtonVisibility(View.GONE)
         initView()
         binding.websiteCardView.descriptionTextView.setOnClickListener {
-            webIntent()
+            openWebSite()
         }
     }
 
@@ -70,12 +70,13 @@ class ContactDetailFragment : Fragment() {
         memoCardView.init(R.string.contact_detail_memo_title, contact.memo)
     }
 
-    private fun webIntent() {
+    private fun openWebSite() {
         val webSite = binding.websiteCardView.descriptionTextView
         val webSiteUrl = webSite.text.toString()
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(webSiteUrl))
         startActivity(intent)
     }
+
     private fun ContactDetailCardBinding.init(stringId: Int, description: String) {
         titleTextView.text = getString(stringId)
         descriptionTextView.text = description
