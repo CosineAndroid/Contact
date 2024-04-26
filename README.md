@@ -17,13 +17,13 @@
 * [박민수](https://github.com/eddy-PMS) [ContactDialogFragment 개발]
 
 ## 와이어프레임
-<img width="200" alt="다이얼로그" src="https://github.com/CosineAndroid/Contact/assets/100404990/4ec534b7-0c2b-44e6-b518-4776bbf337f2">
+<img width="200" alt="리스트페이지" src="https://github.com/CosineAndroid/Contact/assets/100404990/32b3aea0-af2f-4ea4-859e-4f6998d8c61c">
 
 <img width="200" alt="디테일페이지" src="https://github.com/CosineAndroid/Contact/assets/100404990/76c87c83-9a7b-485b-9535-d061b9bf52d8">
 
-<img width="200" alt="리스트페이지" src="https://github.com/CosineAndroid/Contact/assets/100404990/32b3aea0-af2f-4ea4-859e-4f6998d8c61c">
-
 <img width="200" alt="마이페이지" src="https://github.com/CosineAndroid/Contact/assets/100404990/42ba5c2a-b50e-4724-8f6a-a29e6c03dbbc">
+
+<img width="200" alt="다이얼로그" src="https://github.com/CosineAndroid/Contact/assets/100404990/4ec534b7-0c2b-44e6-b518-4776bbf337f2">
 
 ## 트러블 슈팅
 ### 서해윤
