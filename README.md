@@ -27,7 +27,7 @@
 
 ## Git 전략
 * 기능별로 브랜치를 나누고 커밋(풀 리퀘스트)을 할 땐 아래 사진과 같이 작성하였습니다. 
-* 완성 후 최종적으로 main 브랜치로 옮겨 배포하였습니다.
+* 완성 후 최종적으로 main 브랜치로 옮겨 배포하였습니다.  
 ![스크린샷 2024-04-26 111850](https://github.com/CosineAndroid/Contact/assets/100404990/996088fd-6ac5-425e-8671-a7b1945ce258)
 ![스크린샷 2024-04-26 111821](https://github.com/CosineAndroid/Contact/assets/100404990/57c66da7-c35a-4aa5-ad1a-e34bf42a6a8e)
 
