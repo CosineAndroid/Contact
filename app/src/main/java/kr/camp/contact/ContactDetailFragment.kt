@@ -37,9 +37,6 @@ class ContactDetailFragment : Fragment() {
                 this.contact = contact
             }
         }
-        binding.websiteCardView.descriptionTextView.setOnClickListener {
-            webIntent()
-        }
         return binding.root
     }
 
@@ -48,6 +45,9 @@ class ContactDetailFragment : Fragment() {
         mainActivity?.hideBar()
         contactListFragment?.setContactButtonVisibility(View.GONE)
         initView()
+        binding.websiteCardView.descriptionTextView.setOnClickListener {
+            webIntent()
+        }
     }
 
     override fun onDestroyView() {
