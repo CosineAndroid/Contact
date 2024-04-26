@@ -1,5 +1,7 @@
 package kr.camp.contact
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,6 +45,9 @@ class ContactDetailFragment : Fragment() {
         mainActivity?.hideBar()
         contactListFragment?.setContactButtonVisibility(View.GONE)
         initView()
+        binding.websiteCardView.descriptionTextView.setOnClickListener {
+            webIntent()
+        }
     }
 
     override fun onDestroyView() {
@@ -65,6 +70,12 @@ class ContactDetailFragment : Fragment() {
         memoCardView.init(R.string.contact_detail_memo_title, contact.memo)
     }
 
+    private fun webIntent() {
+        val webSite = binding.websiteCardView.descriptionTextView
+        val webSiteUrl = webSite.text.toString()
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(webSiteUrl))
+        startActivity(intent)
+    }
     private fun ContactDetailCardBinding.init(stringId: Int, description: String) {
         titleTextView.text = getString(stringId)
         descriptionTextView.text = description
