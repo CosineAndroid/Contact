@@ -46,5 +46,5 @@
 * 알게된 점: TextWatcher 인터페이스는 3가지 함수(beforeTextChanged, onTextChanged, afterTextChanged)를 모두 재정의해야 한다는점
 
 ## 시연 영상
-[유튜브 바로가기](https://www.youtube.com/watch?v=-o12O4055DI)
+[유튜브 바로가기](https://www.youtube.com/watch?v=-o12O4055DI)  
 <img width="200" alt="시연" src="https://github.com/CosineAndroid/Contact/assets/100404990/5ef65218-ab3c-4248-99e2-685ff2e79e56">
